@@ -1,0 +1,486 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0DA1D3FB190B4A73008CEA54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1D3FA190B4A73008CEA54 /* Foundation.framework */; };
+		0DA1D3FD190B4A73008CEA54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1D3FC190B4A73008CEA54 /* CoreGraphics.framework */; };
+		0DA1D3FF190B4A73008CEA54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1D3FE190B4A73008CEA54 /* UIKit.framework */; };
+		0DA1D405190B4A73008CEA54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DA1D403190B4A73008CEA54 /* InfoPlist.strings */; };
+		0DA1D407190B4A73008CEA54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA1D406190B4A73008CEA54 /* main.m */; };
+		0DA1D40B190B4A73008CEA54 /* LIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA1D40A190B4A73008CEA54 /* LIAppDelegate.m */; };
+		0DA1D40E190B4A73008CEA54 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA1D40C190B4A73008CEA54 /* Main_iPhone.storyboard */; };
+		0DA1D411190B4A73008CEA54 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DA1D40F190B4A73008CEA54 /* Main_iPad.storyboard */; };
+		0DA1D414190B4A73008CEA54 /* LIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA1D413190B4A73008CEA54 /* LIViewController.m */; };
+		0DA1D416190B4A73008CEA54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DA1D415190B4A73008CEA54 /* Images.xcassets */; };
+		0DA1D41D190B4A73008CEA54 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1D41C190B4A73008CEA54 /* XCTest.framework */; };
+		0DA1D41E190B4A73008CEA54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1D3FA190B4A73008CEA54 /* Foundation.framework */; };
+		0DA1D41F190B4A73008CEA54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DA1D3FE190B4A73008CEA54 /* UIKit.framework */; };
+		0DA1D427190B4A73008CEA54 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0DA1D425190B4A73008CEA54 /* InfoPlist.strings */; };
+		0DA1D429190B4A73008CEA54 /* liliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA1D428190B4A73008CEA54 /* liliTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0DA1D420190B4A73008CEA54 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DA1D3EF190B4A73008CEA54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DA1D3F6190B4A73008CEA54;
+			remoteInfo = lili;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0DA1D3F7190B4A73008CEA54 /* lili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lili.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DA1D3FA190B4A73008CEA54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0DA1D3FC190B4A73008CEA54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0DA1D3FE190B4A73008CEA54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0DA1D402190B4A73008CEA54 /* lili-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "lili-Info.plist"; sourceTree = "<group>"; };
+		0DA1D404190B4A73008CEA54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0DA1D406190B4A73008CEA54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0DA1D408190B4A73008CEA54 /* lili-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "lili-Prefix.pch"; sourceTree = "<group>"; };
+		0DA1D409190B4A73008CEA54 /* LIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LIAppDelegate.h; sourceTree = "<group>"; };
+		0DA1D40A190B4A73008CEA54 /* LIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LIAppDelegate.m; sourceTree = "<group>"; };
+		0DA1D40D190B4A73008CEA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0DA1D410190B4A73008CEA54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		0DA1D412190B4A73008CEA54 /* LIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LIViewController.h; sourceTree = "<group>"; };
+		0DA1D413190B4A73008CEA54 /* LIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LIViewController.m; sourceTree = "<group>"; };
+		0DA1D415190B4A73008CEA54 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0DA1D41B190B4A73008CEA54 /* liliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = liliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DA1D41C190B4A73008CEA54 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0DA1D424190B4A73008CEA54 /* liliTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "liliTests-Info.plist"; sourceTree = "<group>"; };
+		0DA1D426190B4A73008CEA54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0DA1D428190B4A73008CEA54 /* liliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = liliTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0DA1D3F4190B4A73008CEA54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1D3FD190B4A73008CEA54 /* CoreGraphics.framework in Frameworks */,
+				0DA1D3FF190B4A73008CEA54 /* UIKit.framework in Frameworks */,
+				0DA1D3FB190B4A73008CEA54 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DA1D418190B4A73008CEA54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1D41D190B4A73008CEA54 /* XCTest.framework in Frameworks */,
+				0DA1D41F190B4A73008CEA54 /* UIKit.framework in Frameworks */,
+				0DA1D41E190B4A73008CEA54 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0DA1D3EE190B4A73008CEA54 = {
+			isa = PBXGroup;
+			children = (
+				0DA1D400190B4A73008CEA54 /* lili */,
+				0DA1D422190B4A73008CEA54 /* liliTests */,
+				0DA1D3F9190B4A73008CEA54 /* Frameworks */,
+				0DA1D3F8190B4A73008CEA54 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0DA1D3F8190B4A73008CEA54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DA1D3F7190B4A73008CEA54 /* lili.app */,
+				0DA1D41B190B4A73008CEA54 /* liliTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0DA1D3F9190B4A73008CEA54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DA1D3FA190B4A73008CEA54 /* Foundation.framework */,
+				0DA1D3FC190B4A73008CEA54 /* CoreGraphics.framework */,
+				0DA1D3FE190B4A73008CEA54 /* UIKit.framework */,
+				0DA1D41C190B4A73008CEA54 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DA1D400190B4A73008CEA54 /* lili */ = {
+			isa = PBXGroup;
+			children = (
+				0DA1D409190B4A73008CEA54 /* LIAppDelegate.h */,
+				0DA1D40A190B4A73008CEA54 /* LIAppDelegate.m */,
+				0DA1D40C190B4A73008CEA54 /* Main_iPhone.storyboard */,
+				0DA1D40F190B4A73008CEA54 /* Main_iPad.storyboard */,
+				0DA1D412190B4A73008CEA54 /* LIViewController.h */,
+				0DA1D413190B4A73008CEA54 /* LIViewController.m */,
+				0DA1D415190B4A73008CEA54 /* Images.xcassets */,
+				0DA1D401190B4A73008CEA54 /* Supporting Files */,
+			);
+			path = lili;
+			sourceTree = "<group>";
+		};
+		0DA1D401190B4A73008CEA54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0DA1D402190B4A73008CEA54 /* lili-Info.plist */,
+				0DA1D403190B4A73008CEA54 /* InfoPlist.strings */,
+				0DA1D406190B4A73008CEA54 /* main.m */,
+				0DA1D408190B4A73008CEA54 /* lili-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0DA1D422190B4A73008CEA54 /* liliTests */ = {
+			isa = PBXGroup;
+			children = (
+				0DA1D428190B4A73008CEA54 /* liliTests.m */,
+				0DA1D423190B4A73008CEA54 /* Supporting Files */,
+			);
+			path = liliTests;
+			sourceTree = "<group>";
+		};
+		0DA1D423190B4A73008CEA54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0DA1D424190B4A73008CEA54 /* liliTests-Info.plist */,
+				0DA1D425190B4A73008CEA54 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0DA1D3F6190B4A73008CEA54 /* lili */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DA1D42C190B4A73008CEA54 /* Build configuration list for PBXNativeTarget "lili" */;
+			buildPhases = (
+				0DA1D3F3190B4A73008CEA54 /* Sources */,
+				0DA1D3F4190B4A73008CEA54 /* Frameworks */,
+				0DA1D3F5190B4A73008CEA54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = lili;
+			productName = lili;
+			productReference = 0DA1D3F7190B4A73008CEA54 /* lili.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0DA1D41A190B4A73008CEA54 /* liliTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DA1D42F190B4A73008CEA54 /* Build configuration list for PBXNativeTarget "liliTests" */;
+			buildPhases = (
+				0DA1D417190B4A73008CEA54 /* Sources */,
+				0DA1D418190B4A73008CEA54 /* Frameworks */,
+				0DA1D419190B4A73008CEA54 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0DA1D421190B4A73008CEA54 /* PBXTargetDependency */,
+			);
+			name = liliTests;
+			productName = liliTests;
+			productReference = 0DA1D41B190B4A73008CEA54 /* liliTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0DA1D3EF190B4A73008CEA54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LI;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = i0xbean;
+				TargetAttributes = {
+					0DA1D41A190B4A73008CEA54 = {
+						TestTargetID = 0DA1D3F6190B4A73008CEA54;
+					};
+				};
+			};
+			buildConfigurationList = 0DA1D3F2190B4A73008CEA54 /* Build configuration list for PBXProject "lili" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0DA1D3EE190B4A73008CEA54;
+			productRefGroup = 0DA1D3F8190B4A73008CEA54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0DA1D3F6190B4A73008CEA54 /* lili */,
+				0DA1D41A190B4A73008CEA54 /* liliTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0DA1D3F5190B4A73008CEA54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1D411190B4A73008CEA54 /* Main_iPad.storyboard in Resources */,
+				0DA1D416190B4A73008CEA54 /* Images.xcassets in Resources */,
+				0DA1D40E190B4A73008CEA54 /* Main_iPhone.storyboard in Resources */,
+				0DA1D405190B4A73008CEA54 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DA1D419190B4A73008CEA54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1D427190B4A73008CEA54 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0DA1D3F3190B4A73008CEA54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1D407190B4A73008CEA54 /* main.m in Sources */,
+				0DA1D40B190B4A73008CEA54 /* LIAppDelegate.m in Sources */,
+				0DA1D414190B4A73008CEA54 /* LIViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DA1D417190B4A73008CEA54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DA1D429190B4A73008CEA54 /* liliTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0DA1D421190B4A73008CEA54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0DA1D3F6190B4A73008CEA54 /* lili */;
+			targetProxy = 0DA1D420190B4A73008CEA54 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0DA1D403190B4A73008CEA54 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DA1D404190B4A73008CEA54 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0DA1D40C190B4A73008CEA54 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DA1D40D190B4A73008CEA54 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		0DA1D40F190B4A73008CEA54 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DA1D410190B4A73008CEA54 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		0DA1D425190B4A73008CEA54 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0DA1D426190B4A73008CEA54 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0DA1D42A190B4A73008CEA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0DA1D42B190B4A73008CEA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0DA1D42D190B4A73008CEA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lili/lili-Prefix.pch";
+				INFOPLIST_FILE = "lili/lili-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0DA1D42E190B4A73008CEA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lili/lili-Prefix.pch";
+				INFOPLIST_FILE = "lili/lili-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0DA1D430190B4A73008CEA54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/lili.app/lili";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lili/lili-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "liliTests/liliTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0DA1D431190B4A73008CEA54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/lili.app/lili";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "lili/lili-Prefix.pch";
+				INFOPLIST_FILE = "liliTests/liliTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0DA1D3F2190B4A73008CEA54 /* Build configuration list for PBXProject "lili" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DA1D42A190B4A73008CEA54 /* Debug */,
+				0DA1D42B190B4A73008CEA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0DA1D42C190B4A73008CEA54 /* Build configuration list for PBXNativeTarget "lili" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DA1D42D190B4A73008CEA54 /* Debug */,
+				0DA1D42E190B4A73008CEA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0DA1D42F190B4A73008CEA54 /* Build configuration list for PBXNativeTarget "liliTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DA1D430190B4A73008CEA54 /* Debug */,
+				0DA1D431190B4A73008CEA54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0DA1D3EF190B4A73008CEA54 /* Project object */;
+}
