@@ -8,10 +8,14 @@
 
 #import "LIAppDelegate.h"
 
+#import "iflyMSC/iflySetting.h"
+
 @implementation LIAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [IFlySetting showLogcat:NO];
+    
     // Override point for customization after application launch.
     return YES;
 }
