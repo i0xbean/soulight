@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-FrameAccessor.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SVProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06D7FC7AB91945649FAA196B</key>
+		<key>20483DF9DE954322828727B6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0C4BA0EB834940DFA9D916E3</key>
+		<key>B287E2D73CBE4C2BA44EC5B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3FA1DC4F8B0545F69019F536</key>
+		<key>D956D8606AB34C8A90C98753</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EB5EC5481B6F4F8DA4F7B5EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

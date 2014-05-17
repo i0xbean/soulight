@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>36F181A0-EBFD-42C5-958A-EEB9C3AF9F82</string>
+	<key>IDESourceControlProjectName</key>
+	<string>soulight</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D8B0ECED-4EB3-468A-B70B-A7BE59DF10FD</key>
+		<string>https://github.com/i0xbean/soulight.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>soulight/soulight.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D8B0ECED-4EB3-468A-B70B-A7BE59DF10FD</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/i0xbean/soulight.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D8B0ECED-4EB3-468A-B70B-A7BE59DF10FD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D8B0ECED-4EB3-468A-B70B-A7BE59DF10FD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>soulight</string>
+		</dict>
+	</array>
+</dict>
+</plist>

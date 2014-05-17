@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D8FAF6D1927A876004DF862 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF6C1927A876004DF862 /* Foundation.framework */; };
+		0D8FAF6F1927A876004DF862 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF6E1927A876004DF862 /* CoreGraphics.framework */; };
+		0D8FAF711927A876004DF862 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF701927A876004DF862 /* UIKit.framework */; };
+		0D8FAF771927A876004DF862 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FAF751927A876004DF862 /* InfoPlist.strings */; };
+		0D8FAF791927A876004DF862 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FAF781927A876004DF862 /* main.m */; };
+		0D8FAF7D1927A876004DF862 /* SLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FAF7C1927A876004DF862 /* SLAppDelegate.m */; };
+		0D8FAF7F1927A876004DF862 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FAF7E1927A876004DF862 /* Images.xcassets */; };
+		0D8FAF861927A876004DF862 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF851927A876004DF862 /* XCTest.framework */; };
+		0D8FAF871927A876004DF862 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF6C1927A876004DF862 /* Foundation.framework */; };
+		0D8FAF881927A876004DF862 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF701927A876004DF862 /* UIKit.framework */; };
+		0D8FAF901927A876004DF862 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FAF8E1927A876004DF862 /* InfoPlist.strings */; };
+		0D8FAF921927A876004DF862 /* soulightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FAF911927A876004DF862 /* soulightTests.m */; };
+		0D8FAFA01927A953004DF862 /* SLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FAF9E1927A953004DF862 /* SLHomeViewController.m */; };
+		0D8FAFA11927A953004DF862 /* SLHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FAF9F1927A953004DF862 /* SLHomeViewController.xib */; };
+		0DF9B37D1927BE6A00E02B2C /* SLInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF9B37C1927BE6A00E02B2C /* SLInputView.m */; };
+		A9C8DF98F11A49768D8A6AF7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF21BCBACF48458BAB105539 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0D8FAF891927A876004DF862 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D8FAF611927A876004DF862 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0D8FAF681927A876004DF862;
+			remoteInfo = soulight;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D8FAF691927A876004DF862 /* soulight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soulight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D8FAF6C1927A876004DF862 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0D8FAF6E1927A876004DF862 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0D8FAF701927A876004DF862 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0D8FAF741927A876004DF862 /* soulight-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "soulight-Info.plist"; sourceTree = "<group>"; };
+		0D8FAF761927A876004DF862 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0D8FAF781927A876004DF862 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0D8FAF7A1927A876004DF862 /* soulight-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "soulight-Prefix.pch"; sourceTree = "<group>"; };
+		0D8FAF7B1927A876004DF862 /* SLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLAppDelegate.h; sourceTree = "<group>"; };
+		0D8FAF7C1927A876004DF862 /* SLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SLAppDelegate.m; sourceTree = "<group>"; };
+		0D8FAF7E1927A876004DF862 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0D8FAF841927A876004DF862 /* soulightTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = soulightTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D8FAF851927A876004DF862 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0D8FAF8D1927A876004DF862 /* soulightTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "soulightTests-Info.plist"; sourceTree = "<group>"; };
+		0D8FAF8F1927A876004DF862 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0D8FAF911927A876004DF862 /* soulightTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = soulightTests.m; sourceTree = "<group>"; };
+		0D8FAF9D1927A953004DF862 /* SLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLHomeViewController.h; path = controllers/SLHomeViewController.h; sourceTree = "<group>"; };
+		0D8FAF9E1927A953004DF862 /* SLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLHomeViewController.m; path = controllers/SLHomeViewController.m; sourceTree = "<group>"; };
+		0D8FAF9F1927A953004DF862 /* SLHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SLHomeViewController.xib; path = controllers/SLHomeViewController.xib; sourceTree = "<group>"; };
+		0DF9B37B1927BE6A00E02B2C /* SLInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLInputView.h; path = views/SLInputView.h; sourceTree = "<group>"; };
+		0DF9B37C1927BE6A00E02B2C /* SLInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLInputView.m; path = views/SLInputView.m; sourceTree = "<group>"; };
+		A21BF5E429164B8A89AE152B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BF21BCBACF48458BAB105539 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D8FAF661927A876004DF862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D8FAF6F1927A876004DF862 /* CoreGraphics.framework in Frameworks */,
+				0D8FAF711927A876004DF862 /* UIKit.framework in Frameworks */,
+				0D8FAF6D1927A876004DF862 /* Foundation.framework in Frameworks */,
+				A9C8DF98F11A49768D8A6AF7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D8FAF811927A876004DF862 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D8FAF861927A876004DF862 /* XCTest.framework in Frameworks */,
+				0D8FAF881927A876004DF862 /* UIKit.framework in Frameworks */,
+				0D8FAF871927A876004DF862 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D8FAF601927A876004DF862 = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF721927A876004DF862 /* soulight */,
+				0D8FAF8B1927A876004DF862 /* soulightTests */,
+				0D8FAF6B1927A876004DF862 /* Frameworks */,
+				0D8FAF6A1927A876004DF862 /* Products */,
+				A21BF5E429164B8A89AE152B /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		0D8FAF6A1927A876004DF862 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF691927A876004DF862 /* soulight.app */,
+				0D8FAF841927A876004DF862 /* soulightTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0D8FAF6B1927A876004DF862 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF6C1927A876004DF862 /* Foundation.framework */,
+				0D8FAF6E1927A876004DF862 /* CoreGraphics.framework */,
+				0D8FAF701927A876004DF862 /* UIKit.framework */,
+				0D8FAF851927A876004DF862 /* XCTest.framework */,
+				BF21BCBACF48458BAB105539 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D8FAF721927A876004DF862 /* soulight */ = {
+			isa = PBXGroup;
+			children = (
+				0DF9B37A1927BE2300E02B2C /* views */,
+				0D8FAF9B1927A901004DF862 /* libs */,
+				0D8FAF9C1927A90E004DF862 /* controllers */,
+				0D8FAF7B1927A876004DF862 /* SLAppDelegate.h */,
+				0D8FAF7C1927A876004DF862 /* SLAppDelegate.m */,
+				0D8FAF7E1927A876004DF862 /* Images.xcassets */,
+				0D8FAF731927A876004DF862 /* Supporting Files */,
+			);
+			path = soulight;
+			sourceTree = "<group>";
+		};
+		0D8FAF731927A876004DF862 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF741927A876004DF862 /* soulight-Info.plist */,
+				0D8FAF751927A876004DF862 /* InfoPlist.strings */,
+				0D8FAF781927A876004DF862 /* main.m */,
+				0D8FAF7A1927A876004DF862 /* soulight-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D8FAF8B1927A876004DF862 /* soulightTests */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF911927A876004DF862 /* soulightTests.m */,
+				0D8FAF8C1927A876004DF862 /* Supporting Files */,
+			);
+			path = soulightTests;
+			sourceTree = "<group>";
+		};
+		0D8FAF8C1927A876004DF862 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF8D1927A876004DF862 /* soulightTests-Info.plist */,
+				0D8FAF8E1927A876004DF862 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D8FAF9B1927A901004DF862 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		0D8FAF9C1927A90E004DF862 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FAF9D1927A953004DF862 /* SLHomeViewController.h */,
+				0D8FAF9E1927A953004DF862 /* SLHomeViewController.m */,
+				0D8FAF9F1927A953004DF862 /* SLHomeViewController.xib */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		0DF9B37A1927BE2300E02B2C /* views */ = {
+			isa = PBXGroup;
+			children = (
+				0DF9B37B1927BE6A00E02B2C /* SLInputView.h */,
+				0DF9B37C1927BE6A00E02B2C /* SLInputView.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D8FAF681927A876004DF862 /* soulight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D8FAF951927A876004DF862 /* Build configuration list for PBXNativeTarget "soulight" */;
+			buildPhases = (
+				BF7D969A069347BEB8A55455 /* Check Pods Manifest.lock */,
+				0D8FAF651927A876004DF862 /* Sources */,
+				0D8FAF661927A876004DF862 /* Frameworks */,
+				0D8FAF671927A876004DF862 /* Resources */,
+				D7F240F9B100436FAB2472A9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = soulight;
+			productName = soulight;
+			productReference = 0D8FAF691927A876004DF862 /* soulight.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0D8FAF831927A876004DF862 /* soulightTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D8FAF981927A876004DF862 /* Build configuration list for PBXNativeTarget "soulightTests" */;
+			buildPhases = (
+				0D8FAF801927A876004DF862 /* Sources */,
+				0D8FAF811927A876004DF862 /* Frameworks */,
+				0D8FAF821927A876004DF862 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0D8FAF8A1927A876004DF862 /* PBXTargetDependency */,
+			);
+			name = soulightTests;
+			productName = soulightTests;
+			productReference = 0D8FAF841927A876004DF862 /* soulightTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D8FAF611927A876004DF862 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SL;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = i0xbean;
+				TargetAttributes = {
+					0D8FAF831927A876004DF862 = {
+						TestTargetID = 0D8FAF681927A876004DF862;
+					};
+				};
+			};
+			buildConfigurationList = 0D8FAF641927A876004DF862 /* Build configuration list for PBXProject "soulight" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0D8FAF601927A876004DF862;
+			productRefGroup = 0D8FAF6A1927A876004DF862 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D8FAF681927A876004DF862 /* soulight */,
+				0D8FAF831927A876004DF862 /* soulightTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D8FAF671927A876004DF862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D8FAF771927A876004DF862 /* InfoPlist.strings in Resources */,
+				0D8FAFA11927A953004DF862 /* SLHomeViewController.xib in Resources */,
+				0D8FAF7F1927A876004DF862 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D8FAF821927A876004DF862 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D8FAF901927A876004DF862 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BF7D969A069347BEB8A55455 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D7F240F9B100436FAB2472A9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D8FAF651927A876004DF862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D8FAF791927A876004DF862 /* main.m in Sources */,
+				0D8FAF7D1927A876004DF862 /* SLAppDelegate.m in Sources */,
+				0DF9B37D1927BE6A00E02B2C /* SLInputView.m in Sources */,
+				0D8FAFA01927A953004DF862 /* SLHomeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D8FAF801927A876004DF862 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D8FAF921927A876004DF862 /* soulightTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0D8FAF8A1927A876004DF862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0D8FAF681927A876004DF862 /* soulight */;
+			targetProxy = 0D8FAF891927A876004DF862 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0D8FAF751927A876004DF862 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D8FAF761927A876004DF862 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0D8FAF8E1927A876004DF862 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0D8FAF8F1927A876004DF862 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0D8FAF931927A876004DF862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0D8FAF941927A876004DF862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D8FAF961927A876004DF862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A21BF5E429164B8A89AE152B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "soulight/soulight-Prefix.pch";
+				INFOPLIST_FILE = "soulight/soulight-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0D8FAF971927A876004DF862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A21BF5E429164B8A89AE152B /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "soulight/soulight-Prefix.pch";
+				INFOPLIST_FILE = "soulight/soulight-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0D8FAF991927A876004DF862 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/soulight.app/soulight";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "soulight/soulight-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "soulightTests/soulightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0D8FAF9A1927A876004DF862 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/soulight.app/soulight";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "soulight/soulight-Prefix.pch";
+				INFOPLIST_FILE = "soulightTests/soulightTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D8FAF641927A876004DF862 /* Build configuration list for PBXProject "soulight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D8FAF931927A876004DF862 /* Debug */,
+				0D8FAF941927A876004DF862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D8FAF951927A876004DF862 /* Build configuration list for PBXNativeTarget "soulight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D8FAF961927A876004DF862 /* Debug */,
+				0D8FAF971927A876004DF862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D8FAF981927A876004DF862 /* Build configuration list for PBXNativeTarget "soulightTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D8FAF991927A876004DF862 /* Debug */,
+				0D8FAF9A1927A876004DF862 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D8FAF611927A876004DF862 /* Project object */;
+}

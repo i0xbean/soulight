@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SLHomeViewController">
+            <connections>
+                <outlet property="inputView" destination="S6T-M5-8x0" id="E21-Xr-4Fq"/>
+                <outlet property="textView" destination="672-Rw-tUd" id="KR2-Sy-Tjd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="672-Rw-tUd">
+                    <rect key="frame" x="16" y="80" width="288" height="400"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <string key="text">中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中；
+发生的林凤娇；
+分手快乐的风景收到机房螺丝刀机房科技时代李开复接口螺丝刀 水电费了；中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中；
+发生的林凤娇；
+分手快乐的风景收到机房螺丝刀机房科技时代李开复接口螺丝刀 水电费了；中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中；
+发生的林凤娇；
+分手快乐的风景收到机房螺丝刀机房科技时代李开复接口螺丝刀 水电费了；中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中中文听写中；
+发生的林凤娇；
+分手快乐的风景收到机房螺丝刀机房科技时代李开复接口螺丝刀 水电费了；</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6T-M5-8x0" userLabel="inputView">
+                    <rect key="frame" x="0.0" y="496" width="320" height="56"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMw-b7-RUQ">
+                            <rect key="frame" x="124" y="-8" width="72" height="72"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="72" id="ReL-SR-4fo"/>
+                                <constraint firstAttribute="height" constant="72" id="SPS-ow-y4Y"/>
+                            </constraints>
+                            <state key="normal" title="录音">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnX-tn-BT1">
+                            <rect key="frame" x="16" y="6" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="HrM-jg-L63"/>
+                                <constraint firstAttribute="height" constant="44" id="a6r-22-olc"/>
+                            </constraints>
+                            <state key="normal" title="撤销">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHl-ze-3Ll">
+                            <rect key="frame" x="262" y="6" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="KrT-eV-IZS"/>
+                                <constraint firstAttribute="width" constant="44" id="l6e-EW-gH1"/>
+                            </constraints>
+                            <state key="normal" title="收起">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="hideKeyboardBtnAction" destination="-1" eventType="touchUpInside" id="zCz-ua-rD3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yn-dH-hxg">
+                            <rect key="frame" x="68" y="6" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="0ec-vc-Uxy"/>
+                                <constraint firstAttribute="width" constant="44" id="5Do-HT-hvO"/>
+                            </constraints>
+                            <state key="normal" title="重做">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="6yn-dH-hxg" secondAttribute="centerY" id="0x1-xW-W2k"/>
+                        <constraint firstAttribute="centerY" secondItem="NHl-ze-3Ll" secondAttribute="centerY" id="DUk-cX-yLB"/>
+                        <constraint firstAttribute="height" constant="56" id="EhJ-iR-RsK"/>
+                        <constraint firstAttribute="centerX" secondItem="nMw-b7-RUQ" secondAttribute="centerX" id="Lvf-dL-6d8"/>
+                        <constraint firstAttribute="centerY" secondItem="nMw-b7-RUQ" secondAttribute="centerY" id="MVN-KV-XKg"/>
+                        <constraint firstAttribute="width" constant="320" id="Mhx-MO-7nD"/>
+                        <constraint firstAttribute="centerY" secondItem="TnX-tn-BT1" secondAttribute="centerY" id="XFR-x0-uHQ"/>
+                        <constraint firstAttribute="trailing" secondItem="NHl-ze-3Ll" secondAttribute="trailing" constant="14" id="fqw-wL-GXF"/>
+                        <constraint firstItem="TnX-tn-BT1" firstAttribute="leading" secondItem="S6T-M5-8x0" secondAttribute="leading" constant="16" id="yhk-t2-ZVz"/>
+                        <constraint firstItem="6yn-dH-hxg" firstAttribute="leading" secondItem="TnX-tn-BT1" secondAttribute="trailing" constant="8" id="zuu-dn-ubJ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="672-Rw-tUd" secondAttribute="trailing" constant="16" id="Doe-ET-TCM"/>
+                <constraint firstItem="672-Rw-tUd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="FzX-kY-usA"/>
+                <constraint firstAttribute="bottom" secondItem="672-Rw-tUd" secondAttribute="bottom" constant="88" id="R9p-xP-AxK"/>
+                <constraint firstItem="672-Rw-tUd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="egg-XJ-rbX"/>
+                <constraint firstAttribute="bottom" secondItem="S6T-M5-8x0" secondAttribute="bottom" constant="16" id="nC5-g0-09d"/>
+                <constraint firstItem="S6T-M5-8x0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t1D-ey-vFv"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>
