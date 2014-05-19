@@ -41,13 +41,30 @@
     [super viewDidLoad];
     
     // self init
+    self.title = @"Soulight";
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    self.navigationItem.leftBarButtonItem =
+    [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:@"history"]
+                                        style:UIBarButtonItemStylePlain
+                                      handler:^(id sender)
+    {
+        
+    }];
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:@"share"]
+                                        style:UIBarButtonItemStylePlain
+                                      handler:^(id sender)
+     {
+         
+     }];
     
     // controls init
+    self.view.backgroundColor = [UIColor colorWithRed:0.835 green:0.843 blue:0.871 alpha:1];
     self.blankInputView = [[UIView alloc] initWithFrame:CGRectZero];
     self.accessoryView = [[SLInputView alloc] init];
     
@@ -72,9 +89,11 @@
     [_accessoryView.hideKeyboardBtn bk_addEventHandler:^(id sender) {
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionOverrideInheritedOptions animations:^{
             if (_textView.inputView == nil) {
+                _accessoryView.hideKeyboardBtn.selected = NO;
                 _textView.inputView = _blankInputView;
                 _accessoryView.isAtBottom = YES;
             } else {
+                _accessoryView.hideKeyboardBtn.selected = YES;
                 _textView.inputView = nil;
                 _accessoryView.isAtBottom = NO;
             }

@@ -58,44 +58,52 @@ typedef enum  {
     
     CGPoint center = self.middlePoint;
     
+    UIColor *btnBgColor = [UIColor whiteColor];
+    
     _recordBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, cBtnWidth, cBtnWidth)];
-    [_recordBtn setTitle:@"R" forState:UIControlStateNormal];
-    _recordBtn.backgroundColor = [UIColor grayColor];
+    [_recordBtn setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
+    _recordBtn.backgroundColor = btnBgColor;
     _recordBtn.layer.cornerRadius = _recordBtn.width/2;
     _recordBtn.center = center;
+    _recordBtn.layer.borderWidth = 1;
     _recordBtn.y -= 10;
     [self addSubview:_recordBtn];
     
     _undoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
-    [_undoBtn setTitle:@"Undo" forState:UIControlStateNormal];
-    _undoBtn.backgroundColor = [UIColor grayColor];
+    [_undoBtn setImage:[UIImage imageNamed:@"undo"] forState:UIControlStateNormal];
+    _undoBtn.backgroundColor = btnBgColor;
     _undoBtn.layer.cornerRadius = btnWidth/2;
+    _undoBtn.layer.borderWidth = 1;
     _undoBtn.center = center;
     _undoBtn.x -= cPadding + btnPadding*2;
     [self addSubview:_undoBtn];
     
     _redoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
-    [_redoBtn setTitle:@"Redo" forState:UIControlStateNormal];
-    _redoBtn.backgroundColor = [UIColor grayColor];
+    [_redoBtn setImage:[UIImage imageNamed:@"redo"] forState:UIControlStateNormal];
+    _redoBtn.backgroundColor = btnBgColor;
     _redoBtn.layer.cornerRadius = btnWidth/2;
+    _redoBtn.layer.borderWidth = 1;
     _redoBtn.center = center;
     _redoBtn.x -= cPadding + btnPadding*1;
     [self addSubview:_redoBtn];
     
     
     _clearBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
-    [_clearBtn setTitle:@"clr" forState:UIControlStateNormal];
-    _clearBtn.backgroundColor = [UIColor grayColor];
+    [_clearBtn setImage:[UIImage imageNamed:@"no"] forState:UIControlStateNormal];
+    _clearBtn.backgroundColor = btnBgColor;
     _clearBtn.layer.cornerRadius = btnWidth/2;
+    _clearBtn.layer.borderWidth = 1;
     _clearBtn.center = center;
     _clearBtn.x += cPadding + btnPadding*1;
     [self addSubview:_clearBtn];
     
     _hideKeyboardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
-    [_hideKeyboardBtn setTitle:@"hide" forState:UIControlStateNormal];
-    _hideKeyboardBtn.backgroundColor = [UIColor grayColor];
+    [_hideKeyboardBtn setImage:[UIImage imageNamed:@"keyboard"] forState:UIControlStateNormal];
+    [_hideKeyboardBtn setImage:[UIImage imageNamed:@"down"] forState:UIControlStateSelected];
+    _hideKeyboardBtn.backgroundColor = btnBgColor;
     _hideKeyboardBtn.center = center;
     _hideKeyboardBtn.layer.cornerRadius = btnWidth/2;
+    _hideKeyboardBtn.layer.borderWidth = 1;
     _hideKeyboardBtn.x += cPadding + btnPadding*2;
     [self addSubview:_hideKeyboardBtn];
     
@@ -112,7 +120,7 @@ typedef enum  {
     _tatView.alpha = 0;
     [self addSubview:_tatView];
     
-    self.backgroundColor = [UIColor yellowColor];
+    self.backgroundColor = [UIColor clearColor];
     
     
     _tatTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(tatTimeUp) userInfo:nil repeats:YES];
@@ -207,7 +215,7 @@ typedef enum  {
             float cancelingDuration = 1;
             _tatTimer.fireDate = [[NSDate date] dateByAddingTimeInterval:cancelingDuration];
             [UIView animateWithDuration:cancelingDuration animations:^{
-                _tatView.alpha = kTatBeginAlpha;
+                _tatView.alpha = 0;
             }];
             break;
         }
