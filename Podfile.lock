@@ -15,16 +15,19 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - FrameAccessor (1.3.2)
+  - RESideMenu (4.0.4)
   - SVProgressHUD (1.0)
 
 DEPENDENCIES:
   - BlocksKit (~> 2.2.2)
   - FrameAccessor (~> 1.3.2)
+  - RESideMenu
   - SVProgressHUD (~> 1.0)
 
 SPEC CHECKSUMS:
   BlocksKit: d2f8e007646282b4ffc525c15bdf432ad3d11d78
   FrameAccessor: 1c383c4dc298925749fb2a6b9c05cd45be0d8857
+  RESideMenu: 165761ed8fb7364d4e3e3902456a3227add4aba9
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
 
 COCOAPODS: 0.32.1

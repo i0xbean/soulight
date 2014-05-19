@@ -8,6 +8,10 @@
 
 #import "SLAppDelegate.h"
 
+@interface SLAppDelegate () <RESideMenuDelegate>
+
+@end
+
 @implementation SLAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -18,7 +22,21 @@
     
     self.homeVC = [[SLHomeViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:_homeVC];
-    self.window.rootViewController = nav;
+    
+    RESideMenu *sideMenuViewController =
+    [[RESideMenu alloc] initWithContentViewController:nav
+                               leftMenuViewController:[UIViewController new]
+                              rightMenuViewController:[UIViewController new]];
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
+    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    sideMenuViewController.delegate = self;
+    sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    sideMenuViewController.contentViewShadowOpacity = 0.6;
+    sideMenuViewController.contentViewShadowRadius = 12;
+    sideMenuViewController.contentViewShadowEnabled = YES;
+    
+    self.window.rootViewController = sideMenuViewController;
     
     
     [self.window makeKeyAndVisible];

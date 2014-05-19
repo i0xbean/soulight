@@ -18,3 +18,8 @@
 
 #import <FrameAccessor.h>
 #import <QuartzCore/QuartzCore.h>
+
+#import <BlocksKit.h>
+#import <BlocksKit+UIKit.h>
+
+#import <RESideMenu.h>

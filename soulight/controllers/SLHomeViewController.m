@@ -8,8 +8,7 @@
 
 #import "SLHomeViewController.h"
 
-#import <BlocksKit.h>
-#import <BlocksKit+UIKit.h>
+
 
 #import "SLInputView.h"
 
@@ -53,14 +52,14 @@
                                         style:UIBarButtonItemStylePlain
                                       handler:^(id sender)
     {
-        
+        [self presentLeftMenuViewController:nil];
     }];
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] bk_initWithImage:[UIImage imageNamed:@"share"]
                                         style:UIBarButtonItemStylePlain
                                       handler:^(id sender)
      {
-         
+        [self presentRightMenuViewController:nil];
      }];
     
     // controls init
