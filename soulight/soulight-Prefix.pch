@@ -17,3 +17,4 @@
 
 
 #import <FrameAccessor.h>
+#import <QuartzCore/QuartzCore.h>

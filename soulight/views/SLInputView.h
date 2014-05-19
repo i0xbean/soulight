@@ -10,9 +10,13 @@
 
 @interface SLInputView : UIView
 
-@property (strong, nonatomic)     UIButton *      undoBtn;
-@property (strong, nonatomic)     UIButton *      redoBtn;
-@property (strong, nonatomic)     UIButton *      recordBtn;
-@property (strong, nonatomic)     UIButton *      hideKeyboardBtn;
+@property (strong, nonatomic)       UIButton *      recordBtn;
+
+@property (strong, nonatomic)       UIButton *      undoBtn;
+@property (strong, nonatomic)       UIButton *      redoBtn;
+@property (strong, nonatomic)       UIButton *      clearBtn;
+@property (strong, nonatomic)       UIButton *      hideKeyboardBtn;
+
+@property (assign, nonatomic)       BOOL            isAtBottom;
 
 @end
