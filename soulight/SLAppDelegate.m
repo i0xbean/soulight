@@ -8,7 +8,7 @@
 
 #import "SLAppDelegate.h"
 
-@interface SLAppDelegate () <RESideMenuDelegate>
+@interface SLAppDelegate () 
 
 @end
 
@@ -23,20 +23,23 @@
     self.homeVC = [[SLHomeViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:_homeVC];
     
-    RESideMenu *sideMenuViewController =
-    [[RESideMenu alloc] initWithContentViewController:nav
-                               leftMenuViewController:[UIViewController new]
-                              rightMenuViewController:[UIViewController new]];
-    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
-    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-    sideMenuViewController.delegate = self;
-    sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
-    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-    sideMenuViewController.contentViewShadowOpacity = 0.6;
-    sideMenuViewController.contentViewShadowRadius = 12;
-    sideMenuViewController.contentViewShadowEnabled = YES;
+    self.historyVC = [[SLHistoryViewController alloc] init];
+    self.shareVC = [[SLShareViewController alloc] init];
     
-    self.window.rootViewController = sideMenuViewController;
+    self.sideMenu=
+    [[RESideMenu alloc] initWithContentViewController:nav
+                               leftMenuViewController:_historyVC
+                              rightMenuViewController:_shareVC];
+    _sideMenu.backgroundImage = [UIImage imageNamed:@"bg.jpg"];
+    _sideMenu.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    _sideMenu.delegate = _homeVC;
+    _sideMenu.contentViewShadowColor = [UIColor blackColor];
+    _sideMenu.contentViewShadowOffset = CGSizeMake(0, 0);
+    _sideMenu.contentViewShadowOpacity = 0.6;
+    _sideMenu.contentViewShadowRadius = 12;
+    _sideMenu.contentViewShadowEnabled = YES;
+    
+    self.window.rootViewController = _sideMenu;
     
     
     [self.window makeKeyAndVisible];

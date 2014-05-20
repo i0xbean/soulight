@@ -9,11 +9,16 @@
 #import <UIKit/UIKit.h>
 
 #import "SLHomeViewController.h"
+#import "SLHistoryViewController.h"
+#import "SLShareViewController.h"
 
 @interface SLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic)   RESideMenu *                    sideMenu;
 @property (strong, nonatomic)   SLHomeViewController *          homeVC;
+@property (strong, nonatomic)   SLHistoryViewController *       historyVC;
+@property (strong, nonatomic)   SLShareViewController *         shareVC;
 
 @end

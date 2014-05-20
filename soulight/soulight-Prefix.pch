@@ -23,3 +23,11 @@
 #import <BlocksKit+UIKit.h>
 
 #import <RESideMenu.h>
+
+
+
+#define kColorKeyboardBg        [UIColor colorWithHue:0.59 saturation:0.05 brightness:0.86 alpha:1]
+
+#define kCellIdInput        @"kCellIdInput"
+#define kCellHeaderIdInput  @"kCellHeaderIdInput"
+#define kCellIdShare        @"kCellIdShare"

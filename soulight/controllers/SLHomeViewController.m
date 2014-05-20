@@ -9,8 +9,8 @@
 #import "SLHomeViewController.h"
 
 
-
 #import "SLInputView.h"
+#import "SLAppDelegate.h"
 
 @interface SLHomeViewController () <UITextViewDelegate>
 
@@ -63,7 +63,7 @@
      }];
     
     // controls init
-    self.view.backgroundColor = [UIColor colorWithRed:0.835 green:0.843 blue:0.871 alpha:1];
+    self.view.backgroundColor = kColorKeyboardBg;
     self.blankInputView = [[UIView alloc] initWithFrame:CGRectZero];
     self.accessoryView = [[SLInputView alloc] init];
     
@@ -109,8 +109,15 @@
     
     // last set
     
-    [_textView becomeFirstResponder];
+    
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [_textView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -198,22 +205,20 @@
     float endFrameY = endFrame.origin.y;
     
     [UIView animateKeyframesWithDuration:animationDuration delay:0 options:UIViewKeyframeAnimationOptionBeginFromCurrentState animations:^{
+        
         if (_accessoryView.isAtBottom) {
-            _accessoryView.recordBtn.transform = CGAffineTransformMakeScale(1, 1);
-            
             _textView.y = 80;
-            _textView.height = endFrameY - 64 - 16 - 16;
+            _textView.height = endFrameY - 64 - 16;
         } else {
-            _accessoryView.recordBtn.transform = CGAffineTransformMakeScale(0.8, 0.8);
-            
             _textView.y = 16;
-            _textView.height = endFrameY - 16 - 16;
+            _textView.height = endFrameY - 16;
         }
+        [_accessoryView setNeedsLayout];
+       
     } completion:^(BOOL finished) {
         
     }];
     
-    [_accessoryView setNeedsLayout];
 }
 
 - (void)keyboardWillHide:(NSNotification*)note;
@@ -221,5 +226,44 @@
     
 }
 
+#pragma mark - RESideMenuDelegate
+
+- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
+{
+    [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionBeginFromCurrentState animations:^{
+        
+        if (_accessoryView.isAtBottom) {
+            _textView.y = 80;
+            _textView.height = self.view.height - _textView.y - 16;
+        } else {
+            _textView.y = 16;
+            _textView.height = self.view.height - _textView.y - 16;
+        }
+        [_accessoryView setNeedsLayout];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
+{
+    
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
+{
+    [_textView becomeFirstResponder];
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
+{
+    
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer
+{
+    
+}
 
 @end

@@ -21,6 +21,16 @@
 		0D8FAF921927A876004DF862 /* soulightTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FAF911927A876004DF862 /* soulightTests.m */; };
 		0D8FAFA01927A953004DF862 /* SLHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FAF9E1927A953004DF862 /* SLHomeViewController.m */; };
 		0D8FAFA11927A953004DF862 /* SLHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8FAF9F1927A953004DF862 /* SLHomeViewController.xib */; };
+		0DA6F0FB192B135D00C991F3 /* bg@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6F0FA192B135D00C991F3 /* bg@2x.jpg */; };
+		0DA6F0FE192B170F00C991F3 /* SLHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6F0FD192B170F00C991F3 /* SLHistoryViewController.m */; };
+		0DA6F102192B182A00C991F3 /* SLInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6F101192B182A00C991F3 /* SLInputTableViewCell.m */; };
+		0DA6F105192B1A9900C991F3 /* SLInputTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6F104192B1A9900C991F3 /* SLInputTableHeaderView.m */; };
+		0DA6F108192B378C00C991F3 /* SLShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6F107192B378C00C991F3 /* SLShareViewController.m */; };
+		0DA6F10B192B38A300C991F3 /* SLShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DA6F10A192B38A300C991F3 /* SLShareCell.m */; };
+		0DA6F10D192B3E4400C991F3 /* copy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6F10C192B3E4400C991F3 /* copy@2x.png */; };
+		0DA6F10F192B3E5700C991F3 /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6F10E192B3E5700C991F3 /* help@2x.png */; };
+		0DA6F111192B3E7000C991F3 /* user_male@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6F110192B3E7000C991F3 /* user_male@2x.png */; };
+		0DA6F113192B411900C991F3 /* visible@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DA6F112192B411900C991F3 /* visible@2x.png */; };
 		0DF9B37D1927BE6A00E02B2C /* SLInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF9B37C1927BE6A00E02B2C /* SLInputView.m */; };
 		8AE24007192A596C00E9F752 /* history@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AE23FF4192A596C00E9F752 /* history@2x.png */; };
 		8AE24008192A596C00E9F752 /* box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AE23FF5192A596C00E9F752 /* box@2x.png */; };
@@ -73,6 +83,21 @@
 		0D8FAF9D1927A953004DF862 /* SLHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLHomeViewController.h; path = controllers/SLHomeViewController.h; sourceTree = "<group>"; };
 		0D8FAF9E1927A953004DF862 /* SLHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLHomeViewController.m; path = controllers/SLHomeViewController.m; sourceTree = "<group>"; };
 		0D8FAF9F1927A953004DF862 /* SLHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SLHomeViewController.xib; path = controllers/SLHomeViewController.xib; sourceTree = "<group>"; };
+		0DA6F0FA192B135D00C991F3 /* bg@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg@2x.jpg"; sourceTree = "<group>"; };
+		0DA6F0FC192B170F00C991F3 /* SLHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLHistoryViewController.h; path = controllers/SLHistoryViewController.h; sourceTree = "<group>"; };
+		0DA6F0FD192B170F00C991F3 /* SLHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLHistoryViewController.m; path = controllers/SLHistoryViewController.m; sourceTree = "<group>"; };
+		0DA6F100192B182A00C991F3 /* SLInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLInputTableViewCell.h; path = views/cells/SLInputTableViewCell.h; sourceTree = "<group>"; };
+		0DA6F101192B182A00C991F3 /* SLInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLInputTableViewCell.m; path = views/cells/SLInputTableViewCell.m; sourceTree = "<group>"; };
+		0DA6F103192B1A9900C991F3 /* SLInputTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLInputTableHeaderView.h; path = views/cells/SLInputTableHeaderView.h; sourceTree = "<group>"; };
+		0DA6F104192B1A9900C991F3 /* SLInputTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLInputTableHeaderView.m; path = views/cells/SLInputTableHeaderView.m; sourceTree = "<group>"; };
+		0DA6F106192B378C00C991F3 /* SLShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLShareViewController.h; path = controllers/SLShareViewController.h; sourceTree = "<group>"; };
+		0DA6F107192B378C00C991F3 /* SLShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLShareViewController.m; path = controllers/SLShareViewController.m; sourceTree = "<group>"; };
+		0DA6F109192B38A300C991F3 /* SLShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLShareCell.h; path = views/cells/SLShareCell.h; sourceTree = "<group>"; };
+		0DA6F10A192B38A300C991F3 /* SLShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLShareCell.m; path = views/cells/SLShareCell.m; sourceTree = "<group>"; };
+		0DA6F10C192B3E4400C991F3 /* copy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "copy@2x.png"; sourceTree = "<group>"; };
+		0DA6F10E192B3E5700C991F3 /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@2x.png"; sourceTree = "<group>"; };
+		0DA6F110192B3E7000C991F3 /* user_male@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male@2x.png"; sourceTree = "<group>"; };
+		0DA6F112192B411900C991F3 /* visible@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visible@2x.png"; sourceTree = "<group>"; };
 		0DF9B37B1927BE6A00E02B2C /* SLInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SLInputView.h; path = views/SLInputView.h; sourceTree = "<group>"; };
 		0DF9B37C1927BE6A00E02B2C /* SLInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SLInputView.m; path = views/SLInputView.m; sourceTree = "<group>"; };
 		8AE23FF4192A596C00E9F752 /* history@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history@2x.png"; sourceTree = "<group>"; };
@@ -211,13 +236,31 @@
 				0D8FAF9D1927A953004DF862 /* SLHomeViewController.h */,
 				0D8FAF9E1927A953004DF862 /* SLHomeViewController.m */,
 				0D8FAF9F1927A953004DF862 /* SLHomeViewController.xib */,
+				0DA6F0FC192B170F00C991F3 /* SLHistoryViewController.h */,
+				0DA6F0FD192B170F00C991F3 /* SLHistoryViewController.m */,
+				0DA6F106192B378C00C991F3 /* SLShareViewController.h */,
+				0DA6F107192B378C00C991F3 /* SLShareViewController.m */,
 			);
 			name = controllers;
+			sourceTree = "<group>";
+		};
+		0DA6F0FF192B180100C991F3 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				0DA6F100192B182A00C991F3 /* SLInputTableViewCell.h */,
+				0DA6F101192B182A00C991F3 /* SLInputTableViewCell.m */,
+				0DA6F103192B1A9900C991F3 /* SLInputTableHeaderView.h */,
+				0DA6F104192B1A9900C991F3 /* SLInputTableHeaderView.m */,
+				0DA6F109192B38A300C991F3 /* SLShareCell.h */,
+				0DA6F10A192B38A300C991F3 /* SLShareCell.m */,
+			);
+			name = cells;
 			sourceTree = "<group>";
 		};
 		0DF9B37A1927BE2300E02B2C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				0DA6F0FF192B180100C991F3 /* cells */,
 				0DF9B37B1927BE6A00E02B2C /* SLInputView.h */,
 				0DF9B37C1927BE6A00E02B2C /* SLInputView.m */,
 			);
@@ -235,6 +278,10 @@
 		8AE23FF3192A596C00E9F752 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0DA6F112192B411900C991F3 /* visible@2x.png */,
+				0DA6F10E192B3E5700C991F3 /* help@2x.png */,
+				0DA6F10C192B3E4400C991F3 /* copy@2x.png */,
+				0DA6F0FA192B135D00C991F3 /* bg@2x.jpg */,
 				8AE23FF4192A596C00E9F752 /* history@2x.png */,
 				8AE23FF5192A596C00E9F752 /* box@2x.png */,
 				8AE23FF7192A596C00E9F752 /* yes@2x.png */,
@@ -250,6 +297,7 @@
 				8AE24001192A596C00E9F752 /* repeat@2x.png */,
 				8AE24002192A596C00E9F752 /* redo@2x.png */,
 				8AE24003192A596C00E9F752 /* settings@2x.png */,
+				0DA6F110192B3E7000C991F3 /* user_male@2x.png */,
 				8AE24004192A596C00E9F752 /* cloud@2x.png */,
 				8AE24005192A596C00E9F752 /* stop@2x.png */,
 				8AE24006192A596C00E9F752 /* share@2x.png */,
@@ -339,6 +387,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AE24014192A596C00E9F752 /* repeat@2x.png in Resources */,
+				0DA6F111192B3E7000C991F3 /* user_male@2x.png in Resources */,
+				0DA6F10D192B3E4400C991F3 /* copy@2x.png in Resources */,
 				0D8FAF771927A876004DF862 /* InfoPlist.strings in Resources */,
 				8AE2400E192A596C00E9F752 /* keyboard@2x.png in Resources */,
 				8AE24013192A596C00E9F752 /* price_tag@2x.png in Resources */,
@@ -346,13 +396,16 @@
 				8AE24019192A596C00E9F752 /* share@2x.png in Resources */,
 				8AE24010192A596C00E9F752 /* pause@2x.png in Resources */,
 				8AE24016192A596C00E9F752 /* settings@2x.png in Resources */,
+				0DA6F10F192B3E5700C991F3 /* help@2x.png in Resources */,
 				8AE2400F192A596C00E9F752 /* undo@2x.png in Resources */,
 				8AE24007192A596C00E9F752 /* history@2x.png in Resources */,
 				8AE2400B192A596C00E9F752 /* no@2x.png in Resources */,
 				0D8FAFA11927A953004DF862 /* SLHomeViewController.xib in Resources */,
 				8AE24015192A596C00E9F752 /* redo@2x.png in Resources */,
 				8AE2400C192A596C00E9F752 /* down@2x.png in Resources */,
+				0DA6F113192B411900C991F3 /* visible@2x.png in Resources */,
 				8AE24017192A596C00E9F752 /* cloud@2x.png in Resources */,
+				0DA6F0FB192B135D00C991F3 /* bg@2x.jpg in Resources */,
 				8AE24012192A596C00E9F752 /* plus@2x.png in Resources */,
 				8AE24008192A596C00E9F752 /* box@2x.png in Resources */,
 				0D8FAF7F1927A876004DF862 /* Images.xcassets in Resources */,
@@ -412,8 +465,13 @@
 			files = (
 				0D8FAF791927A876004DF862 /* main.m in Sources */,
 				0D8FAF7D1927A876004DF862 /* SLAppDelegate.m in Sources */,
+				0DA6F10B192B38A300C991F3 /* SLShareCell.m in Sources */,
 				0DF9B37D1927BE6A00E02B2C /* SLInputView.m in Sources */,
+				0DA6F108192B378C00C991F3 /* SLShareViewController.m in Sources */,
+				0DA6F0FE192B170F00C991F3 /* SLHistoryViewController.m in Sources */,
 				0D8FAFA01927A953004DF862 /* SLHomeViewController.m in Sources */,
+				0DA6F102192B182A00C991F3 /* SLInputTableViewCell.m in Sources */,
+				0DA6F105192B1A9900C991F3 /* SLInputTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

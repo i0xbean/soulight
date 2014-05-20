@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SLHomeViewController : UIViewController
+@interface SLHomeViewController : UIViewController <RESideMenuDelegate>
 
 @end

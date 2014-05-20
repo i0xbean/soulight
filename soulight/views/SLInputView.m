@@ -38,7 +38,7 @@ typedef enum  {
 
 - (instancetype)init
 {
-    self = [super initWithFrame:CGRectMake(0, 0, 320, 64)];
+    self = [super initWithFrame:CGRectMake(0, 0, 320, 80)];
     if (self) {
         [self customInit];
     }
@@ -57,6 +57,7 @@ typedef enum  {
     }
     
     CGPoint center = self.middlePoint;
+    center.y += 8;
     
     UIColor *btnBgColor = [UIColor whiteColor];
     
@@ -129,9 +130,16 @@ typedef enum  {
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+
+    CGPoint p = self.middlePoint;
+    p.y = _isAtBottom ? self.middleY - 2 : self.middleY + 8;
+    _recordBtn.center = p;
     
-    _recordBtn.center = self.middlePoint;
-    _recordBtn.y += _isAtBottom ? -10 : 0;
+    if (_isAtBottom) {
+        _recordBtn.transform = CGAffineTransformMakeScale(1, 1);
+    } else {
+        _recordBtn.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    }
 }
 
 
