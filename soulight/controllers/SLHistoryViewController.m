@@ -7,14 +7,24 @@
 //
 
 #import "SLHistoryViewController.h"
-#import "SLInputTableViewCell.h"
-#import "SLInputTableHeaderView.h"
+#import "SLHistoryTableViewCell.h"
+#import "SLHistoryTableHeaderView.h"
+#import "SLShareReusableView.h"
+#import "SLTextDataProvider.h"
+#import "SLHistoryTopView.h"
+#import "SLAppDelegate.h"
 
 
 
 @interface SLHistoryViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic)   UITableView *tableView;
+
+@property (strong, nonatomic)   SLHistoryTopView *          historyTopView;
+
+@property (strong, nonatomic)   NSArray *                   textDateDatas;
+@property (strong, nonatomic)   NSArray *                   textDatas;
+
+@property (strong, nonatomic)   NSIndexPath *               activeIndexPath;
 
 @end
 
@@ -24,7 +34,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -38,16 +48,33 @@
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    _historyTopView = [[SLHistoryTopView alloc] init];
+    [_historyTopView.button bk_addEventHandler:^(id sender) {
+        [_tableView beginUpdates];
+        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationTop];
+        SLTextData *d = [[SLTextDataProvider sharedInstance] createTextData];
+        [[SLTextDataProvider sharedInstance] setActiveTextData:d];
+        
+        [self reloadTextData:^{
+            [_tableView endUpdates];
+            [[SLTextDataProvider sharedInstance] save];
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
     self.tableView = ({
         UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(16, 20, 180, self.view.height-20)
                                                       style:UITableViewStyleGrouped];
-        t.separatorStyle = UITableViewCellSeparatorStyleNone;
+        t.allowsMultipleSelectionDuringEditing = NO;
+//        t.separatorStyle = UITableViewCellSeparatorStyleNone;
         t.showsVerticalScrollIndicator = NO;
         t.backgroundColor = [UIColor clearColor];
         t.dataSource = self;
         t.delegate = self;
         t.sectionFooterHeight = 0;
-        t.contentInset = UIEdgeInsetsMake(0, 0, -20, 0);
+        t.separatorInset = UIEdgeInsetsMake(0, 0, 10, 0);
+        t.tableHeaderView = _historyTopView;
+        t.clipsToBounds = NO;
         t;
     });
 
@@ -67,8 +94,10 @@
     
     // controls setup
     
-    [_tableView registerClass:[SLInputTableViewCell class] forCellReuseIdentifier:kCellIdInput];
-    [_tableView registerClass:[SLInputTableHeaderView class] forHeaderFooterViewReuseIdentifier:kCellHeaderIdInput];
+    [_tableView registerClass:[SLHistoryTableViewCell class] forCellReuseIdentifier:kCellIdInput];
+    [_tableView registerClass:[SLHistoryTableHeaderView class] forHeaderFooterViewReuseIdentifier:kCellHeaderIdInput];
+    
+    [self reloadTextData:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,25 +105,52 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+//    [_tableView debugBackgroundColor];
+}
+
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return _textDateDatas.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    NSArray *someDayTextDatas = _textDatas[section];
+    return someDayTextDatas.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdInput forIndexPath:indexPath];
+    SLHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdInput forIndexPath:indexPath];
+    
+    SLTextData *d = _textDatas[indexPath.section][indexPath.row];
+    [cell resetWithTextData: d];
+    
+    BOOL selected = [_activeIndexPath compare:indexPath] == NSOrderedSame;
+    [cell setSelected:selected animated:YES];
+    
     return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    SLInputTableHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kCellHeaderIdInput];
+    SLHistoryTableHeaderView *view = [tableView dequeueReusableHeaderFooterViewWithIdentifier:kCellHeaderIdInput];
     return view;
 }
 
@@ -105,12 +161,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [NSString stringWithFormat:@"%@ 6月7日", @(section)];
+    NSDate *d = _textDateDatas[section];
+    return [NSString stringWithFormat:@"%ld月%ld日", d.month, d.day];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 127;
+    SLTextData *d = _textDatas[indexPath.section][indexPath.row];
+    return d.reuseHistoryCellHeight;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -121,6 +179,42 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return UITableViewAutomaticDimension;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SLHistoryTableViewCell *cell = (SLHistoryTableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
+    [[SLTextDataProvider sharedInstance] setActiveTextData:cell.textData];
+    [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
+}
+
+
+
+
+
+#pragma mark - private
+
+- (void)reloadTextData:(void(^)(void))block
+{
+    [[SLTextDataProvider sharedInstance] formatTextDatas:
+     ^(NSArray *formatDates, NSArray *formatTextDatas, NSIndexPath *activeIndexPath)
+    {
+        _textDateDatas = formatDates;
+        _textDatas = formatTextDatas;
+        _activeIndexPath = activeIndexPath;
+        
+        if (block) {
+            block();
+        }
+
+        
+        
+//        [_tableView selectRowAtIndexPath:activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        
+
+    }];
 }
 
 @end

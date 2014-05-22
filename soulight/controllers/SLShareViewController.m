@@ -8,6 +8,8 @@
 
 #import "SLShareViewController.h"
 #import "SLShareCell.h"
+#import "SLShareReusableView.h"
+
 
 @interface SLShareViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -32,10 +34,18 @@
 
     _collectionView = ({
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-        UICollectionView *v = [[UICollectionView alloc] initWithFrame:CGRectMake(144, 20, self.view.width-144-16, self.view.height-20-16)
-                                                 collectionViewLayout:layout];
+        layout.headerReferenceSize = CGSizeMake(100, 20);
+        layout.itemSize = CGSizeMake(50, 50);
+
+        UICollectionView *v =
+            [[UICollectionView alloc] initWithFrame:CGRectMake(144, 20, self.view.width-144-16, self.view.height-20-16)
+                               collectionViewLayout:layout];
         [v registerClass:[SLShareCell class] forCellWithReuseIdentifier:kCellIdShare];
-        v.backgroundColor = [UIColor redColor];
+        [v registerClass:[SLShareReusableView class]
+forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+     withReuseIdentifier:kCellIdShareReusable];
+        v.dataSource = self;
+        v.delegate = self;
         v;
     });
     
@@ -44,7 +54,7 @@
     
     UIButton *editBtn = ({
         UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(34, 504, 48, 48)];
-        [b setImage:[UIImage imageNamed:@"visible"] forState:UIControlStateNormal];
+        [b setImage:[UIImage imageNamed:@"eye"] forState:UIControlStateNormal];
         b.showsTouchWhenHighlighted = YES;
         b.layer.cornerRadius = 48/2;
         b.layer.borderWidth = 1;
@@ -61,7 +71,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - UICollectionViewDataSource, UICollectionViewDelegate
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [_collectionView debugBackgroundColor];
+}
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 2;
+}
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -74,6 +96,15 @@
     
     return cell;
 }
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    SLShareReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kCellIdShareReusable forIndexPath:indexPath];
+    return view;
+}
+
+#pragma mark - UICollectionViewDelegate
+
 
 
 @end

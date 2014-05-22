@@ -21,10 +21,7 @@ typedef enum  {
 } SLTatStatus;
 
 @interface SLInputView () {
-    float       btnWidth;
-    float       cBtnWidth;
-    float       cPadding;
-    float       btnPadding;
+
 }
 
 @property (strong, nonatomic)       UIView *            tatView;
@@ -47,22 +44,15 @@ typedef enum  {
 
 - (void)customInit
 {
-    if (1) {
-        btnWidth = 48;
-        cBtnWidth = 74;
-        cPadding = 14;
-        btnPadding = 53;
-    } else {    // for iPad
-        
-    }
     
     CGPoint center = self.middlePoint;
     center.y += 8;
     
     UIColor *btnBgColor = [UIColor whiteColor];
     
-    _recordBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, cBtnWidth, cBtnWidth)];
-    [_recordBtn setImage:[UIImage imageNamed:@"plus"] forState:UIControlStateNormal];
+    _recordBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutMainBtnWidth, kLayoutMainBtnWidth)];
+    [_recordBtn setImage:[UIImage imageNamed:@"mic"] forState:UIControlStateNormal];
+    [_recordBtn setImage:[UIImage imageNamed:@"pause"] forState:UIControlStateSelected];
     _recordBtn.backgroundColor = btnBgColor;
     _recordBtn.layer.cornerRadius = _recordBtn.width/2;
     _recordBtn.center = center;
@@ -70,42 +60,42 @@ typedef enum  {
     _recordBtn.y -= 10;
     [self addSubview:_recordBtn];
     
-    _undoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
+    _undoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
     [_undoBtn setImage:[UIImage imageNamed:@"undo"] forState:UIControlStateNormal];
     _undoBtn.backgroundColor = btnBgColor;
-    _undoBtn.layer.cornerRadius = btnWidth/2;
+    _undoBtn.layer.cornerRadius = kLayoutBtnWidth/2;
     _undoBtn.layer.borderWidth = 1;
     _undoBtn.center = center;
-    _undoBtn.x -= cPadding + btnPadding*2;
+    _undoBtn.x -= kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*2;
     [self addSubview:_undoBtn];
     
-    _redoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
+    _redoBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
     [_redoBtn setImage:[UIImage imageNamed:@"redo"] forState:UIControlStateNormal];
     _redoBtn.backgroundColor = btnBgColor;
-    _redoBtn.layer.cornerRadius = btnWidth/2;
+    _redoBtn.layer.cornerRadius = kLayoutBtnWidth/2;
     _redoBtn.layer.borderWidth = 1;
     _redoBtn.center = center;
-    _redoBtn.x -= cPadding + btnPadding*1;
+    _redoBtn.x -= kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*1;
     [self addSubview:_redoBtn];
     
     
-    _clearBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
+    _clearBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
     [_clearBtn setImage:[UIImage imageNamed:@"no"] forState:UIControlStateNormal];
     _clearBtn.backgroundColor = btnBgColor;
-    _clearBtn.layer.cornerRadius = btnWidth/2;
+    _clearBtn.layer.cornerRadius = kLayoutBtnWidth/2;
     _clearBtn.layer.borderWidth = 1;
     _clearBtn.center = center;
-    _clearBtn.x += cPadding + btnPadding*1;
+    _clearBtn.x += kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*1;
     [self addSubview:_clearBtn];
     
-    _hideKeyboardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, btnWidth, btnWidth)];
+    _hideKeyboardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
     [_hideKeyboardBtn setImage:[UIImage imageNamed:@"keyboard"] forState:UIControlStateNormal];
     [_hideKeyboardBtn setImage:[UIImage imageNamed:@"down"] forState:UIControlStateSelected];
     _hideKeyboardBtn.backgroundColor = btnBgColor;
     _hideKeyboardBtn.center = center;
-    _hideKeyboardBtn.layer.cornerRadius = btnWidth/2;
+    _hideKeyboardBtn.layer.cornerRadius = kLayoutBtnWidth/2;
     _hideKeyboardBtn.layer.borderWidth = 1;
-    _hideKeyboardBtn.x += cPadding + btnPadding*2;
+    _hideKeyboardBtn.x += kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*2;
     [self addSubview:_hideKeyboardBtn];
     
     _recordBtn.showsTouchWhenHighlighted = YES;
@@ -114,7 +104,7 @@ typedef enum  {
     _clearBtn.showsTouchWhenHighlighted = YES;
     _hideKeyboardBtn.showsTouchWhenHighlighted = YES;
     
-    _tatView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, btnWidth)];
+    _tatView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, kLayoutBtnWidth)];
     _tatView.backgroundColor = kColorBlue;
     _tatView.userInteractionEnabled = NO;
     _tatView.center = center;
@@ -176,7 +166,7 @@ typedef enum  {
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    NSLog(@"touchesEnded:%@|%@", nil, nil);
+    DDLogVerbose(@"touchesEnded:%@|%@", nil, nil);
 
     if (_tatStatus == SLTatStatusActive) {
         self.tatStatus = SLTatStatusCanceling;
@@ -189,7 +179,7 @@ typedef enum  {
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self touchesCancelled:touches withEvent:event];
-    NSLog(@"touchesCancelled:%@|%@", nil, event);
+    DDLogVerbose(@"touchesCancelled:%@|%@", nil, event);
     self.tatStatus = SLTatStatusNone;
 }
 

@@ -10,4 +10,6 @@
 
 @interface SLHistoryViewController : UIViewController
 
+@property (strong, nonatomic)   UITableView *               tableView;
+
 @end

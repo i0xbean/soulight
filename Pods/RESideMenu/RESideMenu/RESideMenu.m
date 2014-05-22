@@ -775,20 +775,14 @@
 - (BOOL)prefersStatusBarHidden
 {
     BOOL statusBarHidden = NO;
-//    IF_IOS7_OR_GREATER(
+    IF_IOS7_OR_GREATER(
         statusBarHidden = self.visible ? self.menuPrefersStatusBarHidden : self.contentViewController.prefersStatusBarHidden;
         if (self.contentViewContainer.frame.origin.y > 10) {
             statusBarHidden = self.menuPrefersStatusBarHidden;
         } else {
-            if ([self.contentViewController isKindOfClass:[UINavigationController class]]) {
-                UINavigationController *nav = (UINavigationController *)self.contentViewController;
-                statusBarHidden = nav.visibleViewController.prefersStatusBarHidden;
-            } else {
-                statusBarHidden = self.contentViewController.prefersStatusBarHidden;
-            }
-            
+            statusBarHidden = self.contentViewController.prefersStatusBarHidden;
         }
-//    );
+    );
     return statusBarHidden;
 }
 

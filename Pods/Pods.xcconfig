@@ -1,5 +1,8 @@
+CLANG_CXX_LANGUAGE_STANDARD = c++11
+CLANG_CXX_LIBRARY = libc++
+FRAMEWORK_SEARCH_PATHS = '${PODS_ROOT}/Reveal-iOS-SDK/Reveal-Framework-1.0.4' "$(PODS_ROOT)/Reveal-iOS-SDK/Reveal-Framework-1.0.4"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/BlocksKit" "${PODS_ROOT}/Headers/FrameAccessor" "${PODS_ROOT}/Headers/RESideMenu" "${PODS_ROOT}/Headers/SVProgressHUD"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/BlocksKit" -isystem "${PODS_ROOT}/Headers/FrameAccessor" -isystem "${PODS_ROOT}/Headers/RESideMenu" -isystem "${PODS_ROOT}/Headers/SVProgressHUD"
-OTHER_LDFLAGS = -ObjC -framework MessageUI -framework QuartzCore
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AutoCoding" "${PODS_ROOT}/Headers/BlocksKit" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/EGOCache" "${PODS_ROOT}/Headers/FrameAccessor" "${PODS_ROOT}/Headers/NSDate-Extensions" "${PODS_ROOT}/Headers/RESideMenu" "${PODS_ROOT}/Headers/Reveal-iOS-SDK" "${PODS_ROOT}/Headers/SVProgressHUD" "${PODS_ROOT}/Headers/Shimmer" "${PODS_ROOT}/Headers/pop"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AutoCoding" -isystem "${PODS_ROOT}/Headers/BlocksKit" -isystem "${PODS_ROOT}/Headers/CocoaLumberjack" -isystem "${PODS_ROOT}/Headers/EGOCache" -isystem "${PODS_ROOT}/Headers/FrameAccessor" -isystem "${PODS_ROOT}/Headers/NSDate-Extensions" -isystem "${PODS_ROOT}/Headers/RESideMenu" -isystem "${PODS_ROOT}/Headers/Reveal-iOS-SDK" -isystem "${PODS_ROOT}/Headers/SVProgressHUD" -isystem "${PODS_ROOT}/Headers/Shimmer" -isystem "${PODS_ROOT}/Headers/pop"
+OTHER_LDFLAGS = -ObjC -lc++ -framework CFNetwork -framework CoreGraphics -framework Foundation -framework MessageUI -framework QuartzCore -framework Reveal
 PODS_ROOT = ${SRCROOT}/Pods

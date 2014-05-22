@@ -8,15 +8,36 @@
 
 #import "SLShareCell.h"
 
+@interface SLShareCell ()
+
+@property (strong, nonatomic)   UIButton *          btn;
+
+@end
+
 @implementation SLShareCell
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self customInit];
     }
     return self;
+}
+
+- (void)customInit
+{
+    _btn = ({
+        UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
+        b.center = self.contentView.center;
+        b.backgroundColor = [UIColor clearColor];
+        b.layer.cornerRadius = b.width/2;
+        b.layer.borderWidth = 1;
+        b.showsTouchWhenHighlighted = YES;
+        b;
+    });
+    
+    [self.contentView addSubview:_btn];
 }
 
 /*

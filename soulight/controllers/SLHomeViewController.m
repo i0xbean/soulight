@@ -8,16 +8,27 @@
 
 #import "SLHomeViewController.h"
 
+#import <iflyMSC/IFlySpeechUser.h>
+#import <iflyMSC/IFlySpeechRecognizerDelegate.h>
+#import <iflyMSC/IFlySpeechRecognizer.h>
 
 #import "SLInputView.h"
 #import "SLAppDelegate.h"
+#import "SLTextDataProvider.h"
 
-@interface SLHomeViewController () <UITextViewDelegate>
+
+
+@interface SLHomeViewController () <UITextViewDelegate, IFlySpeechRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
-@property (strong, nonatomic)   SLInputView *       accessoryView;
-@property (strong, nonatomic)   UIView *            blankInputView;
+@property (strong, nonatomic)   SLTextData *                        activeTextData;
+
+@property (strong, nonatomic)   SLInputView *                       accessoryView;
+@property (strong, nonatomic)   UIView *                            blankInputView;
+
+@property (strong, nonatomic)   IFlySpeechUser *                    flyUser;
+@property (weak, nonatomic)     IFlySpeechRecognizer *              flySpeechRecognizer;
 
 
 @property (nonatomic, getter = isStatusBarHidden)   BOOL            statusBarHidden;
@@ -30,9 +41,35 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self customInit];
     }
     return self;
+}
+
+- (void)customInit
+{
+    NSString *flyLoginStr = [NSString stringWithFormat:@"appid=%@", kAPIFlyAppId];
+    _flyUser = [[IFlySpeechUser alloc] init];
+    [_flyUser login:nil pwd:nil param:flyLoginStr];
+    
+    NSString *flyRegInitStr = [NSString stringWithFormat:@"appid=%@,timeout=%d", kAPIFlyAppId, kAPIFlyTimeout];
+    _flySpeechRecognizer = [IFlySpeechRecognizer createRecognizer:flyRegInitStr delegate:self];
+    
+    NSDictionary *flyRegConfig =
+        @{
+          @"domain"         : @"iat",           //取值为iat、at、search、video、poi、music、asr；iat：普通文本转写； search：热词搜索； video：视频音乐搜索； asr：命令词识别;
+          @"vad_bos"        : @"10000",         //前端点检测；静音超时时间，即用户多长时间不说话则当做超时处理； 单位：ms； engine指定iat识别默认值为5000； 其他情况默认值为 4000，范围 0-10000。
+          @"vad_eos"        : @"10000",         //后断点检测；后端点静音检测时间，即用户停止说话多长时间内即认为不再输入， 自动停止录音；单位:ms，sms 识别默认值为 1800，其他默认值为 700，范围 0-10000。
+          @"sample_rate"    : @"16000",         //采样率，目前支持的采样率设置有 16000 和 8000。
+          @"asr_ptt"        : @"1",             //否返回无标点符号文本； 默认为 1，当设置为 0 时，将返回无标点符号文本。
+          };
+    
+    BOOL configRs = [flyRegConfig bk_all:^BOOL(NSString *key, NSString *value) {
+        return [_flySpeechRecognizer setParameter:key value:value];
+    }];
+    if (!configRs) {
+        DDLogError(@"fly config error.");
+    }
 }
 
 - (void)viewDidLoad
@@ -81,8 +118,30 @@
 
     // set actions
     
+    [_accessoryView.recordBtn bk_addEventHandler:^(UIButton* recordBtn) {
+        if (recordBtn.selected == NO) {
+            if (![_flySpeechRecognizer startListening]) {
+                DDLogError(@"fly starting error.");
+            }
+        } else {
+            [_flySpeechRecognizer cancel];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [_accessoryView.undoBtn bk_addEventHandler:^(UIButton* undoBtn) {
+        [_textView.undoManager undo];
+        [self reloadUndoRedoButtons];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [_accessoryView.redoBtn bk_addEventHandler:^(UIButton* redoBtn) {
+        [_textView.undoManager redo];
+        [self reloadUndoRedoButtons];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
     [_accessoryView.clearBtn bk_addEventHandler:^(id sender) {
-        _textView.text = @"";
+        _textView.text = nil;
+        [_textView.undoManager removeAllActions];
+        [self reloadUndoRedoButtons];
     } forControlEvents:UIControlEventTouchUpInside];
     
     [_accessoryView.hideKeyboardBtn bk_addEventHandler:^(id sender) {
@@ -109,8 +168,15 @@
     
     // last set
     
+    [[NSNotificationCenter defaultCenter] addObserverForName:kNotifActiveTextDataChanged
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *note)
+    {
+        [self reloadActiveTextData];
+    }];
     
-
+    [self reloadActiveTextData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -118,6 +184,11 @@
     [super viewWillAppear:animated];
     
     [_textView becomeFirstResponder];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,6 +227,16 @@
     
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [self reloadUndoRedoButtons];
+    _activeTextData.text = _textView.text;
+    
+    UITableView *tv = [SLAppDelegate mzAppDelegate].historyVC.tableView;
+    
+    [tv reloadRowsAtIndexPaths:tv.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 #pragma mark - overwirte
 
 - (BOOL)prefersStatusBarHidden
@@ -178,7 +259,28 @@
     }
 }
 
+- (void)reloadActiveTextData
+{
+    _activeTextData = [SLTextDataProvider sharedInstance].activeTextData;
+    
+    _textView.text = _activeTextData.text;
+    [_textView.undoManager removeAllActions];
+    
+    [self reloadUndoRedoButtons];
+    
+    [_flySpeechRecognizer cancel];
+}
+
 #pragma mark - Private
+
+
+
+- (void)reloadUndoRedoButtons
+{
+    [_accessoryView.undoBtn setEnabled:_textView.undoManager.canUndo];
+    [_accessoryView.redoBtn setEnabled:_textView.undoManager.canRedo];
+    
+}
 
 - (void)toggleStatusBarHiddenWithAppearanceUpdate:(BOOL)updateAppearance
 {
@@ -248,7 +350,7 @@
 
 - (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
 {
-    
+    [[SLTextDataProvider sharedInstance] save];
 }
 
 - (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
@@ -266,4 +368,53 @@
     
 }
 
+
+#pragma mark - IFlySpeechRecognizerDelegate
+
+- (void)onError:(IFlySpeechError *)errorCode
+{
+    _accessoryView.recordBtn.selected = NO;
+    DDLogError(@"fly:%d|%@", errorCode.errorCode, errorCode.errorDesc);
+    //todo: 一分钟超时
+}
+
+- (void)onResults:(NSArray *)results
+{
+    for (NSDictionary *dic in results) {
+        DDLogInfo(@"fly result:%@|%@", dic.allKeys.firstObject, dic.allValues.firstObject);
+    }
+    
+    NSDictionary *dic = results.firstObject;
+    NSString *text = dic.allKeys.firstObject;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_textView.undoManager beginUndoGrouping];
+        [_textView insertText:text];
+        [_textView.undoManager endUndoGrouping];
+    });
+}
+
+- (void)onVolumeChanged:(int)volume
+{
+    
+}
+
+- (void)onBeginOfSpeech
+{
+    _accessoryView.recordBtn.selected = YES;
+}
+
+- (void)onEndOfSpeech
+{
+    
+}
+
+- (void)onCancel
+{
+    _accessoryView.recordBtn.selected = NO;
+}
+
+
+
 @end
+

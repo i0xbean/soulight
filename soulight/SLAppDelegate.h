@@ -12,6 +12,24 @@
 #import "SLHistoryViewController.h"
 #import "SLShareViewController.h"
 
+
+@interface UIResponder (xx)
+
++ (instancetype)mzAppDelegate;
+
+@end
+
+@implementation UIResponder (xx)
+
++ (instancetype)mzAppDelegate;
+{
+    return [UIApplication sharedApplication].delegate;
+}
+
+@end
+
+
+
 @interface SLAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

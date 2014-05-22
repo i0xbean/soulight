@@ -21,13 +21,48 @@
 
 #import <BlocksKit.h>
 #import <BlocksKit+UIKit.h>
-
+#import <DDLog.h>
 #import <RESideMenu.h>
+#import <NSDate-Utilities.h>
+#import <EGOCache.h>
+
+#import "MZSingleton.h"
 
 
+
+
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
 #define kColorKeyboardBg        [UIColor colorWithHue:0.59 saturation:0.05 brightness:0.86 alpha:1]
 
-#define kCellIdInput        @"kCellIdInput"
-#define kCellHeaderIdInput  @"kCellHeaderIdInput"
-#define kCellIdShare        @"kCellIdShare"
+#define kCellIdInput                            @"kCellIdInput"
+#define kCellHeaderIdInput                      @"kCellHeaderIdInput"
+#define kCellIdShare                            @"kCellIdShare"
+#define kCellIdShareReusable                    @"kCellIdShareReusable"
+
+#define kCacheTextDatas                         @"kCacheTextDatas"
+#define kCacheActiveTextDataIndex               @"kCacheActiveTextDataIndex"
+
+
+#define kLayoutBtnWidth                         48
+#define kLayoutMainBtnWidth                     74
+#define kLayoutInputMainBtnPadding              14
+#define kLayoutInputBtnPadding                  53
+
+#define kLayoutHistoryCellWidth                 180
+#define kLayoutHistoryCellLabelWidth            160
+#define kLayoutHistoryCellLabelTop              8
+#define kLayoutHistoryCellHeightMin             32
+#define kLayoutHistoryCellHeightMax             111
+#define kLayoutHistoryCellMarginBottom          16
+
+
+#define kNotifActiveTextDataChanged             @"kNotifActiveTextDataChanged"
+
+#import "UIView+MZDebug.h"
+
+
+#define kAPIFlyAppId                            @"534823e2"
+#define kAPIFlyTimeout                          20000
+
+#define kFontH4                                 [UIFont systemFontOfSize:14]

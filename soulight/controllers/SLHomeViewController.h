@@ -10,4 +10,7 @@
 
 @interface SLHomeViewController : UIViewController <RESideMenuDelegate>
 
+
+- (void)reloadActiveTextData;
+
 @end
