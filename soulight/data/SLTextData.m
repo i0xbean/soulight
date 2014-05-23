@@ -44,4 +44,17 @@
 }
 
 
+#pragma mark - public
+
+- (NSString*)showText;
+{
+    return _text.length > 0 ? _text : @"新笔记";
+}
+
+- (NSString*)showTitle;
+{
+    return @"todo";
+}
+
+
 @end

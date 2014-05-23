@@ -28,18 +28,19 @@
 - (void)customInit;
 {
     self.width = kLayoutHistoryCellWidth;
-    self.height = kLayoutHistoryCellHeightMin + kLayoutHistoryCellMarginBottom;
+    self.height = kLayoutHistoryCellHeightMin;
     
     _button = ({
         UIButton *b =
             [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutHistoryCellWidth, kLayoutHistoryCellHeightMin)];
         [b setImage:[UIImage imageNamed:@"new"] forState:UIControlStateNormal];
+        b.showsTouchWhenHighlighted = YES;
         b;
     });
     
     [self addSubview:_button];
     
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = kColorKeyboardBg;
 }
 
 /*

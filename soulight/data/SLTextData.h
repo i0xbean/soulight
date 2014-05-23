@@ -17,4 +17,8 @@
 
 @property (assign, nonatomic)   float               reuseHistoryCellHeight;
 
+
+- (NSString*)showText;
+- (NSString*)showTitle;
+
 @end

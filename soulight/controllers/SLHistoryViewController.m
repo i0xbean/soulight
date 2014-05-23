@@ -13,7 +13,7 @@
 #import "SLTextDataProvider.h"
 #import "SLHistoryTopView.h"
 #import "SLAppDelegate.h"
-
+#import "NSArray+MZAddition.h"
 
 
 @interface SLHistoryViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -57,14 +57,8 @@
     
     _historyTopView = [[SLHistoryTopView alloc] init];
     [_historyTopView.button bk_addEventHandler:^(id sender) {
-        
-        
-        [_tableView beginUpdates];
-        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationNone];
-        
-        [[SLTextDataProvider sharedInstance] createTextData];
-        [_tableView endUpdates];
+        [self createATextData];
+        [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
     } forControlEvents:UIControlEventTouchUpInside];
     
     self.tableView = ({
@@ -103,33 +97,59 @@
     [_tableView registerClass:[SLHistoryTableViewCell class] forCellReuseIdentifier:kCellIdInput];
     [_tableView registerClass:[SLHistoryTableHeaderView class] forHeaderFooterViewReuseIdentifier:kCellHeaderIdInput];
     
-    
-    DDLogError(@"s:%ld,r:%ld", _activeIndexPath.section, _activeIndexPath.row);
-    [_tableView selectRowAtIndexPath:_activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    if ([_allDayTextDatas containsIndexPath:_activeIndexPath]) {
+        [_tableView selectRowAtIndexPath:_activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kNotifDeleteTextDataCell object:nil queue:nil usingBlock:^(NSNotification *note)
     {
-        SLHistoryTableViewCell *cell = note.object;
         
-        
-        
-        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-        if (indexPath) {
-            [_tableView beginUpdates];
-            [[SLTextDataProvider sharedInstance] removeTextData:cell.textData];
-            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            [_tableView endUpdates];
-        }
-        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                SLHistoryTableViewCell *cell = note.object;
+                
+                NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+                if (indexPath) {
+                    
+                    
+                    [[SLTextDataProvider sharedInstance] removeTextData:cell.textData];
+                    [_tableView beginUpdates];
+                    
+                    NSArray *dayTextDatas = _allDayTextDatas[indexPath.section];
+                    if (dayTextDatas.count > 1) {
+                        [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    } else {
+                        [_tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+                    }
+                    
+                    
+                    [_tableView endUpdates];
+                    
+                    if (_allDates.count == 0) {
+                        [self createATextData];
+                    }
+                    
+                    if ([indexPath compare:_activeIndexPath] == NSOrderedSame) {
+                        NSIndexPath *newIndexPath = [_allDayTextDatas indexPathNextWithIndexPath:indexPath]
+                        ?: [_allDayTextDatas indexPathPrevWithIndexPath:indexPath];
+                        if (newIndexPath) {
+                            //                    [SLTextDataProvider sharedInstance].activeIndexPath = newIndexPath;
+                        }
+                    }
+                }
+                
+            });
+
+        });
+
     }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kNotifActiveTextDataChanged object:nil queue:nil usingBlock:^(NSNotification *note) {
         _activeIndexPath = dataProvider.activeIndexPath;
-        [_tableView selectRowAtIndexPath:_activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
     }];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,7 +173,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *someDayTextDatas = _allDayTextDatas[section];
+    NSArray *someDayTextDatas = _allDayTextDatas.count > section ? _allDayTextDatas[section] : nil;
     return someDayTextDatas.count;
 }
 
@@ -191,7 +211,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSDate *d = _allDates[section];
-    return [NSString stringWithFormat:@"%ld月%ld日", d.month, d.day];
+    return [NSString stringWithFormat:@"%ld月%ld日", (long)d.month, (long)d.day];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -216,13 +236,36 @@
 {
     SLHistoryTableViewCell *cell = (SLHistoryTableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
     [[SLTextDataProvider sharedInstance] setActiveTextData:cell.textData];
+    [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
 }
 
 
-
-
-
 #pragma mark - private
+
+- (void)createATextData
+{
+    SLTextData *activeTextData = [SLTextDataProvider sharedInstance].activeTextData;
+    if (activeTextData && activeTextData.text.length == 0) {
+        [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
+        return;
+    }
+    
+    [[SLTextDataProvider sharedInstance] createTextData];
+    [_tableView beginUpdates];
+    
+    NSArray *dayTextDatas = _allDayTextDatas[_activeIndexPath.section];
+    if (dayTextDatas.count > 1) {
+        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+    } else {
+        [_tableView insertSections:[NSIndexSet indexSetWithIndex:_activeIndexPath.section]
+                  withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+
+    [_tableView endUpdates];
+    
+    [_tableView selectRowAtIndexPath:_activeIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
 
 
 @end

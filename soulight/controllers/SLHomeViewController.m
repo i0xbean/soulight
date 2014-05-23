@@ -169,7 +169,7 @@
     // last set
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kNotifActiveTextDataChanged
-                                                      object:self
+                                                      object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note)
     {
@@ -231,15 +231,13 @@
 {
     [self reloadUndoRedoButtons];
     _activeTextData.text = _textView.text;
+    SLTextDataProvider *dProvider = [SLTextDataProvider sharedInstance];
     
     UITableView *tv = [SLAppDelegate mzAppDelegate].historyVC.tableView;
-    NSIndexPath *selectedRow = tv.indexPathForSelectedRow;
     
-    if (selectedRow) {
-        // reload will miss selected status, so reset selected cells.
-        [tv reloadRowsAtIndexPaths:@[selectedRow] withRowAnimation:UITableViewRowAnimationAutomatic];
-        [tv selectRowAtIndexPath:selectedRow animated:NO scrollPosition:UITableViewScrollPositionNone];
-    }
+    // reload will miss selected status, so reset selected cells.
+    [tv reloadRowsAtIndexPaths:@[dProvider.activeIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tv selectRowAtIndexPath:dProvider.activeIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
     
 }
 

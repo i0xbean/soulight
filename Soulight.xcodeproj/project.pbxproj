@@ -61,6 +61,7 @@
 		0D6A5AAB192C6A5F00FF609B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6A5AAA192C6A5F00FF609B /* SystemConfiguration.framework */; };
 		0D6A5AAD192C6A6600FF609B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6A5AAC192C6A6600FF609B /* AudioToolbox.framework */; };
 		0D6A5AAF192C6AF600FF609B /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6A5AAE192C6AF600FF609B /* iflyMSC.framework */; };
+		0D6BBB47192F9753006C29BB /* NSArray+MZAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6BBB46192F9753006C29BB /* NSArray+MZAddition.m */; };
 		0D8FAF6D1927A876004DF862 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF6C1927A876004DF862 /* Foundation.framework */; };
 		0D8FAF6F1927A876004DF862 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF6E1927A876004DF862 /* CoreGraphics.framework */; };
 		0D8FAF711927A876004DF862 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8FAF701927A876004DF862 /* UIKit.framework */; };
@@ -155,6 +156,8 @@
 		0D6A5AAA192C6A5F00FF609B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0D6A5AAC192C6A6600FF609B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		0D6A5AAE192C6AF600FF609B /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iflyMSC.framework; path = soulight/libs/iflyMSC.framework; sourceTree = "<group>"; };
+		0D6BBB45192F9753006C29BB /* NSArray+MZAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+MZAddition.h"; path = "libs/MZAddition/NSArray+MZAddition.h"; sourceTree = "<group>"; };
+		0D6BBB46192F9753006C29BB /* NSArray+MZAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+MZAddition.m"; path = "libs/MZAddition/NSArray+MZAddition.m"; sourceTree = "<group>"; };
 		0D8FAF691927A876004DF862 /* soulight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soulight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8FAF6C1927A876004DF862 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D8FAF6E1927A876004DF862 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -304,6 +307,15 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		0D6BBB44192F96C9006C29BB /* MZAddition */ = {
+			isa = PBXGroup;
+			children = (
+				0D6BBB45192F9753006C29BB /* NSArray+MZAddition.h */,
+				0D6BBB46192F9753006C29BB /* NSArray+MZAddition.m */,
+			);
+			name = MZAddition;
+			sourceTree = "<group>";
+		};
 		0D8FAF601927A876004DF862 = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +401,7 @@
 		0D8FAF9B1927A901004DF862 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0D6BBB44192F96C9006C29BB /* MZAddition */,
 				0D0C9026192C947E00C08CA1 /* MIMacro */,
 				0DB5E6DD192C402B006899D2 /* MZDebug */,
 			);
@@ -503,7 +516,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0D8FAF641927A876004DF862 /* Build configuration list for PBXProject "soulight" */;
+			buildConfigurationList = 0D8FAF641927A876004DF862 /* Build configuration list for PBXProject "Soulight" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -637,6 +650,7 @@
 				0DA6F0FE192B170F00C991F3 /* SLHistoryViewController.m in Sources */,
 				0D5F6431192D9F4200D7C375 /* SLHistoryTopView.m in Sources */,
 				0D8FAFA01927A953004DF862 /* SLHomeViewController.m in Sources */,
+				0D6BBB47192F9753006C29BB /* NSArray+MZAddition.m in Sources */,
 				0D0C902B192C94D700C08CA1 /* SLTextData.m in Sources */,
 				0DA6F102192B182A00C991F3 /* SLHistoryTableViewCell.m in Sources */,
 				0DA6F105192B1A9900C991F3 /* SLHistoryTableHeaderView.m in Sources */,
@@ -838,7 +852,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0D8FAF641927A876004DF862 /* Build configuration list for PBXProject "soulight" */ = {
+		0D8FAF641927A876004DF862 /* Build configuration list for PBXProject "Soulight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D8FAF931927A876004DF862 /* Debug */,

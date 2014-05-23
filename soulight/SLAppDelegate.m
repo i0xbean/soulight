@@ -22,6 +22,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[SLTextDataProvider sharedInstance] debugClearData];
+    
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     [[DDTTYLogger sharedInstance] setColorsEnabled:YES];

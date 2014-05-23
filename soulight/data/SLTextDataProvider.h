@@ -28,4 +28,8 @@ MZSINGLETON_IN_H
 
 - (BOOL)removeTextData:(SLTextData*)data;
 
+
+- (void)debugClearData;
+- (void)debugAppendDataWithDays:(int)days;
+
 @end

@@ -68,6 +68,7 @@
         l.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         l.font = kFontH4;
         l.text = @"左划删除";
+        l.alpha = 0;
         l.textAlignment = NSTextAlignmentRight;
         l;
     });
@@ -81,6 +82,7 @@
         
         if (state == UIGestureRecognizerStateChanged && p.x < 0) {
             _deleteLabel.text = p.x < -kLayoutHistoryCellDeleteWidth ? @"释放删除" : @"左划删除";
+            _deleteLabel.alpha = p.x/(-kLayoutHistoryCellDeleteWidth*1.0)*0.6;
             _paper.x = p.x;
         } else if (state == UIGestureRecognizerStateEnded) {
             BOOL delete = p.x < -kLayoutHistoryCellDeleteWidth;
@@ -91,6 +93,7 @@
                                       animations:^
             {
                 _paper.x = delete ? -kLayoutHistoryCellWidth - 20 : 0;
+                _deleteLabel.alpha = 0;
             } completion:^(BOOL finished) {
                 if (delete) {
                     [[NSNotificationCenter defaultCenter] postNotificationName:kNotifDeleteTextDataCell object:self userInfo:nil];
@@ -106,9 +109,14 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    
-//    DDLogWarn(@"www|%@|%d", _textData.text, selected);
     _tLabel.textColor = selected ? [UIColor redColor] : [UIColor blackColor];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    _paper.x = 0;
 }
 
 #pragma mark - public
@@ -117,7 +125,7 @@
 {
     
     _textData = data;
-    _tLabel.text = _textData.text.length == 0 ? @"空白笔记" : _textData.text;
+    _tLabel.text = _textData.showText;
 
 }
 

@@ -30,65 +30,56 @@ MZSINGLETON_IN_M
 
 - (void)customInit
 {
+    [self loadDataFromCache];
+    if (_allDayTextDatas.count == 0) {
+        [self createTextData];
+        _activeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    }
+}
+
+- (void)loadDataFromCache
+{
     NSArray *tmpArray = (NSArray*)[[EGOCache globalCache] objectForKey:kCacheAllDayTextDatas];
     _allDayTextDatas = [NSMutableArray arrayWithArray:[tmpArray mutableCopy]];
     tmpArray = (NSArray*)[[EGOCache globalCache] objectForKey:kCacheAllDayDates];
     _allDates = [NSMutableArray arrayWithArray:[tmpArray mutableCopy]];
     _activeIndexPath = (NSIndexPath*)[[EGOCache globalCache] objectForKey:kCacheActiveIndexPath];
-    if (_allDayTextDatas.count == 0) {
-        [self createTextData];
-    }
+}
+
+#pragma mark - POJO
+
+- (void)setActiveIndexPath:(NSIndexPath *)activeIndexPath
+{
+    _activeIndexPath = activeIndexPath;
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotifActiveTextDataChanged object:nil];
 }
 
 #pragma mark - public
 
 - (SLTextData *)createTextData
 {
-    SLTextData *data = [[SLTextData alloc] init];
-    data.createdDate = data.modifiedDate = [NSDate date];
-    
-    NSMutableArray *dayTextDatas = nil;
-    
-    NSDate *newest = _allDates.firstObject;
-    if (newest && [newest isEqualToDateIgnoringTime:data.createdDate]) {
-        dayTextDatas = _allDayTextDatas.firstObject;
-
-    } else {
-        [_allDates insertObject:data.createdDate atIndex:0];
-        dayTextDatas = [NSMutableArray array];
-        [_allDayTextDatas insertObject:dayTextDatas atIndex:0];
-    }
-    
-    [dayTextDatas insertObject:data atIndex:0];
-    self.activeTextData = data;
-    
-    [self save];
-    
-    return data;
+    return [self createTextDataWithDate:[NSDate date]];
 }
 
 - (void)save
 {
-    dispatch_async(dispatch_queue_create("im.ioi.soulight.textdatas_save", 0), ^{
-        [[EGOCache globalCache] setObject:_allDayTextDatas forKey:kCacheAllDayTextDatas];
-        [[EGOCache globalCache] setObject:_allDates forKey:kCacheAllDayDates];
-        [[EGOCache globalCache] setObject:_activeIndexPath forKey:kCacheActiveIndexPath];
-    });
+    [self saveWithAsync:YES];
 }
 
 #pragma mark - public
 
 - (SLTextData*)activeTextData;
 {
-    return _allDayTextDatas[_activeIndexPath.section][_activeIndexPath.row];
+    NSArray *tmpArray =
+        _allDayTextDatas.count>_activeIndexPath.section ? _allDayTextDatas[_activeIndexPath.section] : nil;
+    return tmpArray.count > _activeIndexPath.row ? tmpArray[_activeIndexPath.row] : nil;
 }
 
 - (BOOL)setActiveTextData:(SLTextData*)data;
 {
     NSIndexPath *indexPath = [self findATextData:data];
     if (indexPath) {
-        _activeIndexPath = indexPath;
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotifActiveTextDataChanged object:nil];
+        self.activeIndexPath = indexPath;
         [self save];
         return YES;
     }
@@ -102,7 +93,13 @@ MZSINGLETON_IN_M
         NSMutableArray *dayTextDatas = _allDayTextDatas[indexPath.section];
         [dayTextDatas removeObjectAtIndex:indexPath.row];
         
+        if (dayTextDatas.count == 0) {
+            [_allDayTextDatas removeObject:dayTextDatas];
+            [_allDates removeObjectAtIndex:indexPath.section];
+        }
+        
         [self save];
+        
         return YES;
     }
     return NO;
@@ -131,5 +128,69 @@ MZSINGLETON_IN_M
         return nil;
     }
 }
+
+- (SLTextData *)createTextDataWithDate:(NSDate*)date;
+{
+    SLTextData *data = [[SLTextData alloc] init];
+    data.createdDate = data.modifiedDate = [NSDate date];
+    
+    NSMutableArray *dayTextDatas = nil;
+    
+    NSDate *newest = _allDates.firstObject;
+    if (newest && [newest isEqualToDateIgnoringTime:data.createdDate]) {
+        dayTextDatas = _allDayTextDatas.firstObject;
+        
+    } else {
+        [_allDates insertObject:data.createdDate atIndex:0];
+        dayTextDatas = [NSMutableArray array];
+        [_allDayTextDatas insertObject:dayTextDatas atIndex:0];
+    }
+    
+    [dayTextDatas insertObject:data atIndex:0];
+    self.activeTextData = data;
+    
+    [self save];
+    
+    return data;
+}
+
+- (void)saveWithAsync:(BOOL)async
+{
+    void(^block)()  = ^{
+        [[EGOCache globalCache] setObject:_allDayTextDatas forKey:kCacheAllDayTextDatas];
+        [[EGOCache globalCache] setObject:_allDates forKey:kCacheAllDayDates];
+        [[EGOCache globalCache] setObject:_activeIndexPath forKey:kCacheActiveIndexPath];
+    };
+    
+    if (async) {
+        dispatch_async(dispatch_queue_create("im.ioi.soulight.textdatas_save", 0), block);
+    } else {
+        block();
+    }
+    
+}
+
+
+#pragma mark - debug
+
+- (void)debugClearData;
+{
+    [[EGOCache globalCache] clearCache];
+}
+
+- (void)debugAppendDataWithDays:(int)days;
+{
+    for (int i=0; i<days; i++) {
+        NSDate *date = [NSDate dateWithDaysBeforeNow:i];
+        for (int j=0; j<i%3+1; j++) {
+            SLTextData* tData = [self createTextDataWithDate:date];
+            tData.text = [NSString stringWithFormat:@"%ld - %d", (long)date.day, j];
+        }
+    }
+    
+    [self saveWithAsync:NO];
+    [self loadDataFromCache];
+}
+
 
 @end
