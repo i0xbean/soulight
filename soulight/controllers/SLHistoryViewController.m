@@ -98,6 +98,8 @@
     [_tableView registerClass:[SLHistoryTableHeaderView class] forHeaderFooterViewReuseIdentifier:kCellHeaderIdInput];
     
     [self reloadTextData:nil];
+    
+    DDLogInfo(@"loadllll");
 }
 
 - (void)didReceiveMemoryWarning
@@ -209,8 +211,6 @@
             block();
         }
 
-        
-        
 //        [_tableView selectRowAtIndexPath:activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         
 
