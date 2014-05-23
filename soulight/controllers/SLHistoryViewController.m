@@ -16,7 +16,7 @@
 #import "NSArray+MZAddition.h"
 
 
-@interface SLHistoryViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SLHistoryViewController () <UITableViewDataSource, UITableViewDelegate, SLHistoryDelegate>
 
 
 @property (strong, nonatomic)   SLHistoryTopView *          historyTopView;
@@ -108,39 +108,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                SLHistoryTableViewCell *cell = note.object;
-                
-                NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
-                if (indexPath) {
-                    
-                    
-                    [[SLTextDataProvider sharedInstance] removeTextData:cell.textData];
-                    [_tableView beginUpdates];
-                    
-                    NSArray *dayTextDatas = _allDayTextDatas[indexPath.section];
-                    if (dayTextDatas.count > 1) {
-                        [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    } else {
-                        [_tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
-                                  withRowAnimation:UITableViewRowAnimationAutomatic];
-                    }
-                    
-                    
-                    [_tableView endUpdates];
-                    
-                    if (_allDates.count == 0) {
-                        [self createATextData];
-                    }
-                    
-                    if ([indexPath compare:_activeIndexPath] == NSOrderedSame) {
-                        NSIndexPath *newIndexPath = [_allDayTextDatas indexPathNextWithIndexPath:indexPath]
-                        ?: [_allDayTextDatas indexPathPrevWithIndexPath:indexPath];
-                        if (newIndexPath) {
-                            //                    [SLTextDataProvider sharedInstance].activeIndexPath = newIndexPath;
-                        }
-                    }
-                }
-                
+
             });
 
         });
@@ -151,6 +119,7 @@
         _activeIndexPath = dataProvider.activeIndexPath;
     }];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -180,6 +149,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SLHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdInput forIndexPath:indexPath];
+    cell.delegate = self;
     
     SLTextData *d = _allDayTextDatas[indexPath.section][indexPath.row];
     [cell resetWithTextData: d];
@@ -237,6 +207,45 @@
     SLHistoryTableViewCell *cell = (SLHistoryTableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
     [[SLTextDataProvider sharedInstance] setActiveTextData:cell.textData];
     [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
+}
+
+
+#pragma mark - SLHistoryDelegate
+
+- (void)tableviewDeleteACell:(SLHistoryTableViewCell*)cell
+{
+    
+    NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+    if (indexPath) {
+        
+        
+        
+        [_tableView beginUpdates];
+        [[SLTextDataProvider sharedInstance] removeTextData:cell.textData];
+        NSArray *dayTextDatas = _allDayTextDatas[indexPath.section];
+        if (dayTextDatas.count > 0) {
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        } else {
+            [_tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section]
+                      withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        
+        
+        [_tableView endUpdates];
+        
+        if (_allDates.count == 0) {
+            [self createATextData];
+        }
+        
+        if ([indexPath compare:_activeIndexPath] == NSOrderedSame) {
+            NSIndexPath *newIndexPath = [_allDayTextDatas indexPathNextWithIndexPath:indexPath]
+            ?: [_allDayTextDatas indexPathPrevWithIndexPath:indexPath];
+            if (newIndexPath) {
+                //                    [SLTextDataProvider sharedInstance].activeIndexPath = newIndexPath;
+            }
+        }
+    }
+    
 }
 
 

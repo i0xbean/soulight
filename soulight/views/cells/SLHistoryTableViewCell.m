@@ -96,7 +96,8 @@
                 _deleteLabel.alpha = 0;
             } completion:^(BOOL finished) {
                 if (delete) {
-                    [[NSNotificationCenter defaultCenter] postNotificationName:kNotifDeleteTextDataCell object:self userInfo:nil];
+                    self.alpha = 0;
+                    [self.delegate tableviewDeleteACell:self];
                 }
             }];
         }

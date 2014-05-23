@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "SLTextData.h"
 
+#import "SLHistoryViewController.h"
+
 @interface SLHistoryTableViewCell : UITableViewCell
 
-@property (strong, nonatomic)   SLTextData *        textData;
+@property (strong, nonatomic)   SLTextData *                textData;
+
+@property (weak, nonatomic)     id<SLHistoryDelegate>       delegate;
 
 - (void)resetWithTextData:(SLTextData*)data;
 

@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class SLHistoryTableViewCell;
+
+@protocol SLHistoryDelegate <NSObject>
+
+- (void)tableviewDeleteACell:(SLHistoryTableViewCell*)cell;
+
+@end
+
 @interface SLHistoryViewController : UIViewController
 
 @property (strong, nonatomic)   UITableView *               tableView;
+
+
 
 @end
