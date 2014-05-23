@@ -13,10 +13,6 @@
 
 @interface SLTextDataProvider ()
 
-@property (strong, nonatomic)   NSMutableArray *            textDatas;
-
-@property (assign, nonatomic)   int                         activeIndex;
-
 @end
 
 @implementation SLTextDataProvider
@@ -34,14 +30,13 @@ MZSINGLETON_IN_M
 
 - (void)customInit
 {
-    NSArray *cacheData = (NSArray*)[[EGOCache globalCache] objectForKey:kCacheTextDatas];
-    _activeIndex = [[[EGOCache globalCache] stringForKey:kCacheActiveTextDataIndex] intValue];
-    _textDatas = [NSMutableArray arrayWithArray:cacheData];
-    
-    if (_textDatas.count == 0) {
+    NSArray *tmpArray = (NSArray*)[[EGOCache globalCache] objectForKey:kCacheAllDayTextDatas];
+    _allDayTextDatas = [NSMutableArray arrayWithArray:[tmpArray mutableCopy]];
+    tmpArray = (NSArray*)[[EGOCache globalCache] objectForKey:kCacheAllDayDates];
+    _allDates = [NSMutableArray arrayWithArray:[tmpArray mutableCopy]];
+    _activeIndexPath = (NSIndexPath*)[[EGOCache globalCache] objectForKey:kCacheActiveIndexPath];
+    if (_allDayTextDatas.count == 0) {
         [self createTextData];
-        _activeIndex = 0;
-        [self save];
     }
 }
 
@@ -52,71 +47,88 @@ MZSINGLETON_IN_M
     SLTextData *data = [[SLTextData alloc] init];
     data.createdDate = data.modifiedDate = [NSDate date];
     
-    [_textDatas insertObject:data atIndex:0];
+    NSMutableArray *dayTextDatas = nil;
+    
+    NSDate *newest = _allDates.firstObject;
+    if (newest && [newest isEqualToDateIgnoringTime:data.createdDate]) {
+        dayTextDatas = _allDayTextDatas.firstObject;
+
+    } else {
+        [_allDates insertObject:data.createdDate atIndex:0];
+        dayTextDatas = [NSMutableArray array];
+        [_allDayTextDatas insertObject:dayTextDatas atIndex:0];
+    }
+    
+    [dayTextDatas insertObject:data atIndex:0];
+    self.activeTextData = data;
+    
+    [self save];
     
     return data;
-}
-
-- (NSArray *)allTextDatas
-{
-    return _textDatas;
 }
 
 - (void)save
 {
     dispatch_async(dispatch_queue_create("im.ioi.soulight.textdatas_save", 0), ^{
-        [[EGOCache globalCache] setObject:_textDatas forKey:kCacheTextDatas];
-        [[EGOCache globalCache] setString:@(_activeIndex).description forKey:kCacheActiveTextDataIndex];
+        [[EGOCache globalCache] setObject:_allDayTextDatas forKey:kCacheAllDayTextDatas];
+        [[EGOCache globalCache] setObject:_allDates forKey:kCacheAllDayDates];
+        [[EGOCache globalCache] setObject:_activeIndexPath forKey:kCacheActiveIndexPath];
     });
-}
-
-- (void)formatTextDatas:(void(^)(NSArray *formatDates, NSArray* formatTextDatas, NSIndexPath* activeIndexPath))textDatasBlock;
-{
-    __block NSIndexPath *activeIndexPath        = nil;
-    NSMutableArray *formatDates                 = [NSMutableArray array];
-    NSMutableArray *formatTextDatas             = [NSMutableArray array];
-    __block NSMutableArray *someDayTextDatas    = [NSMutableArray array];
-    __block NSDate *someDayDate                 = ((SLTextData*)_textDatas.firstObject).createdDate;
-    [formatDates addObject:someDayDate];
-    [formatTextDatas addObject:someDayTextDatas];
-    
-    
-    [_textDatas enumerateObjectsUsingBlock:^(SLTextData* d, NSUInteger idx, BOOL *stop) {
-        if (idx == _activeIndex) {
-            activeIndexPath = [NSIndexPath indexPathForItem:someDayTextDatas.count inSection:formatDates.count-1];
-        }
-        
-        if ([someDayDate isEqualToDateIgnoringTime:d.createdDate]) {
-            [someDayTextDatas addObject:d];
-        } else {
-            someDayDate = d.createdDate;
-            [formatDates addObject:someDayDate];
-            
-            someDayTextDatas = [NSMutableArray array];
-            [formatTextDatas addObject:someDayTextDatas];
-        }
-    }];
-    
-    textDatasBlock(formatDates, formatTextDatas, activeIndexPath);
 }
 
 #pragma mark - public
 
 - (SLTextData*)activeTextData;
 {
-    return _textDatas[_activeIndex];
+    return _allDayTextDatas[_activeIndexPath.section][_activeIndexPath.row];
 }
 
 - (BOOL)setActiveTextData:(SLTextData*)data;
 {
-    NSUInteger idx = [_textDatas indexOfObject:data];
-    if (idx == NSNotFound) {
-        return NO;
-    } else {
-        _activeIndex = (int)idx;
+    NSIndexPath *indexPath = [self findATextData:data];
+    if (indexPath) {
+        _activeIndexPath = indexPath;
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotifActiveTextDataChanged object:nil];
         [self save];
         return YES;
+    }
+    return NO;
+}
+
+- (BOOL)removeTextData:(SLTextData*)data;
+{
+    NSIndexPath *indexPath = [self findATextData:data];
+    if (indexPath) {
+        NSMutableArray *dayTextDatas = _allDayTextDatas[indexPath.section];
+        [dayTextDatas removeObjectAtIndex:indexPath.row];
+        
+        [self save];
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark - private
+
+- (NSIndexPath*)findATextData:(SLTextData*)data
+{
+    __block BOOL has = NO;
+    __block NSUInteger s;
+    __block NSUInteger r;
+    [_allDayTextDatas enumerateObjectsUsingBlock:^(NSArray *dayTextDatas, NSUInteger section, BOOL *allStop) {
+        [dayTextDatas enumerateObjectsUsingBlock:^(SLTextData *obj, NSUInteger row, BOOL *stop) {
+            if ([obj isEqual:data]) {
+                has = YES;
+                s = section;
+                r = row;
+            }
+        }];
+    }];
+    
+    if (has) {
+        return [NSIndexPath indexPathForRow:r inSection:s];
+    } else {
+        return nil;
     }
 }
 

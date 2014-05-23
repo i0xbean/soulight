@@ -169,7 +169,7 @@
     // last set
     
     [[NSNotificationCenter defaultCenter] addObserverForName:kNotifActiveTextDataChanged
-                                                      object:nil
+                                                      object:self
                                                        queue:nil
                                                   usingBlock:^(NSNotification *note)
     {
@@ -233,8 +233,14 @@
     _activeTextData.text = _textView.text;
     
     UITableView *tv = [SLAppDelegate mzAppDelegate].historyVC.tableView;
+    NSIndexPath *selectedRow = tv.indexPathForSelectedRow;
     
-    [tv reloadRowsAtIndexPaths:tv.indexPathsForSelectedRows withRowAnimation:UITableViewRowAnimationAutomatic];
+    if (selectedRow) {
+        // reload will miss selected status, so reset selected cells.
+        [tv reloadRowsAtIndexPaths:@[selectedRow] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tv selectRowAtIndexPath:selectedRow animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+    
 }
 
 #pragma mark - overwirte

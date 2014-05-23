@@ -14,15 +14,18 @@
 
 MZSINGLETON_IN_H
 
-@property (readonly)            NSArray *               allTextDatas;
+@property (strong, nonatomic)   NSMutableArray *        allDayTextDatas;
+@property (strong, nonatomic)   NSMutableArray *        allDates;
+@property (strong, nonatomic)   NSIndexPath *           activeIndexPath;
 
 - (SLTextData*)createTextData;
-
-- (void)formatTextDatas:(void(^)(NSArray *formatDates, NSArray* formatTextDatas, NSIndexPath* activeIndexPath))textDatasBlock;
 
 - (void)save;
 
 - (SLTextData*)activeTextData;
 - (BOOL)setActiveTextData:(SLTextData*)data;
+
+
+- (BOOL)removeTextData:(SLTextData*)data;
 
 @end

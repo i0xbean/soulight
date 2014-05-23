@@ -21,8 +21,8 @@
 
 @property (strong, nonatomic)   SLHistoryTopView *          historyTopView;
 
-@property (strong, nonatomic)   NSArray *                   textDateDatas;
-@property (strong, nonatomic)   NSArray *                   textDatas;
+@property (strong, nonatomic)   NSArray *                   allDates;
+@property (strong, nonatomic)   NSArray *                   allDayTextDatas;
 
 @property (strong, nonatomic)   NSIndexPath *               activeIndexPath;
 
@@ -48,25 +48,31 @@
     self.extendedLayoutIncludesOpaqueBars = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    
+    SLTextDataProvider *dataProvider = [SLTextDataProvider sharedInstance];
+    
+    _allDayTextDatas = dataProvider.allDayTextDatas;
+    _allDates = dataProvider.allDates;
+    _activeIndexPath = dataProvider.activeIndexPath;
+    
     _historyTopView = [[SLHistoryTopView alloc] init];
     [_historyTopView.button bk_addEventHandler:^(id sender) {
+        
+        
         [_tableView beginUpdates];
         [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]
-                          withRowAnimation:UITableViewRowAnimationTop];
-        SLTextData *d = [[SLTextDataProvider sharedInstance] createTextData];
-        [[SLTextDataProvider sharedInstance] setActiveTextData:d];
+                          withRowAnimation:UITableViewRowAnimationNone];
         
-        [self reloadTextData:^{
-            [_tableView endUpdates];
-            [[SLTextDataProvider sharedInstance] save];
-        }];
+        [[SLTextDataProvider sharedInstance] createTextData];
+        [_tableView endUpdates];
     } forControlEvents:UIControlEventTouchUpInside];
     
     self.tableView = ({
         UITableView *t = [[UITableView alloc] initWithFrame:CGRectMake(16, 20, 180, self.view.height-20)
                                                       style:UITableViewStyleGrouped];
+        t.allowsMultipleSelection = NO;
         t.allowsMultipleSelectionDuringEditing = NO;
-//        t.separatorStyle = UITableViewCellSeparatorStyleNone;
+        t.separatorStyle = UITableViewCellSeparatorStyleNone;
         t.showsVerticalScrollIndicator = NO;
         t.backgroundColor = [UIColor clearColor];
         t.dataSource = self;
@@ -97,9 +103,33 @@
     [_tableView registerClass:[SLHistoryTableViewCell class] forCellReuseIdentifier:kCellIdInput];
     [_tableView registerClass:[SLHistoryTableHeaderView class] forHeaderFooterViewReuseIdentifier:kCellHeaderIdInput];
     
-    [self reloadTextData:nil];
     
-    DDLogInfo(@"loadllll");
+    DDLogError(@"s:%ld,r:%ld", _activeIndexPath.section, _activeIndexPath.row);
+    [_tableView selectRowAtIndexPath:_activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kNotifDeleteTextDataCell object:nil queue:nil usingBlock:^(NSNotification *note)
+    {
+        SLHistoryTableViewCell *cell = note.object;
+        
+        
+        
+        NSIndexPath *indexPath = [_tableView indexPathForCell:cell];
+        if (indexPath) {
+            [_tableView beginUpdates];
+            [[SLTextDataProvider sharedInstance] removeTextData:cell.textData];
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [_tableView endUpdates];
+        }
+        
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kNotifActiveTextDataChanged object:nil queue:nil usingBlock:^(NSNotification *note) {
+        _activeIndexPath = dataProvider.activeIndexPath;
+        [_tableView selectRowAtIndexPath:_activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -118,12 +148,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return _textDateDatas.count;
+    return _allDates.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *someDayTextDatas = _textDatas[section];
+    NSArray *someDayTextDatas = _allDayTextDatas[section];
     return someDayTextDatas.count;
 }
 
@@ -131,18 +161,15 @@
 {
     SLHistoryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdInput forIndexPath:indexPath];
     
-    SLTextData *d = _textDatas[indexPath.section][indexPath.row];
+    SLTextData *d = _allDayTextDatas[indexPath.section][indexPath.row];
     [cell resetWithTextData: d];
-    
-    BOOL selected = [_activeIndexPath compare:indexPath] == NSOrderedSame;
-    [cell setSelected:selected animated:YES];
     
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,13 +190,13 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    NSDate *d = _textDateDatas[section];
+    NSDate *d = _allDates[section];
     return [NSString stringWithFormat:@"%ld月%ld日", d.month, d.day];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SLTextData *d = _textDatas[indexPath.section][indexPath.row];
+    SLTextData *d = _allDayTextDatas[indexPath.section][indexPath.row];
     return d.reuseHistoryCellHeight;
 }
 
@@ -189,7 +216,6 @@
 {
     SLHistoryTableViewCell *cell = (SLHistoryTableViewCell*)[_tableView cellForRowAtIndexPath:indexPath];
     [[SLTextDataProvider sharedInstance] setActiveTextData:cell.textData];
-    [[SLAppDelegate mzAppDelegate].sideMenu hideMenuViewController];
 }
 
 
@@ -198,23 +224,5 @@
 
 #pragma mark - private
 
-- (void)reloadTextData:(void(^)(void))block
-{
-    [[SLTextDataProvider sharedInstance] formatTextDatas:
-     ^(NSArray *formatDates, NSArray *formatTextDatas, NSIndexPath *activeIndexPath)
-    {
-        _textDateDatas = formatDates;
-        _textDatas = formatTextDatas;
-        _activeIndexPath = activeIndexPath;
-        
-        if (block) {
-            block();
-        }
-
-//        [_tableView selectRowAtIndexPath:activeIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-        
-
-    }];
-}
 
 @end

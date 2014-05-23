@@ -40,8 +40,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #define kCellIdShare                            @"kCellIdShare"
 #define kCellIdShareReusable                    @"kCellIdShareReusable"
 
-#define kCacheTextDatas                         @"kCacheTextDatas"
-#define kCacheActiveTextDataIndex               @"kCacheActiveTextDataIndex"
+#define kCacheAllDayTextDatas                   @"kCacheAllDayTextDatas"
+#define kCacheAllDayDates                       @"kCacheAllDayDates"
+#define kCacheActiveIndexPath                   @"kCacheActiveIndexPath"
 
 
 #define kLayoutBtnWidth                         48
@@ -55,9 +56,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #define kLayoutHistoryCellHeightMin             32
 #define kLayoutHistoryCellHeightMax             111
 #define kLayoutHistoryCellMarginBottom          16
+#define kLayoutHistoryCellDeleteWidth           80
 
 
 #define kNotifActiveTextDataChanged             @"kNotifActiveTextDataChanged"
+#define kNotifDeleteTextDataCell                @"kNotifDeleteTextDataCell"
 
 #import "UIView+MZDebug.h"
 

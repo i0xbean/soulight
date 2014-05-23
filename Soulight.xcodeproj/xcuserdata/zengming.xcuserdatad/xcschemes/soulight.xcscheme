@@ -17,7 +17,7 @@
                BlueprintIdentifier = "0D8FAF681927A876004DF862"
                BuildableName = "soulight.app"
                BlueprintName = "soulight"
-               ReferencedContainer = "container:soulight.xcodeproj">
+               ReferencedContainer = "container:Soulight.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "0D8FAF831927A876004DF862"
                BuildableName = "soulightTests.xctest"
                BlueprintName = "soulightTests"
-               ReferencedContainer = "container:soulight.xcodeproj">
+               ReferencedContainer = "container:Soulight.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "0D8FAF681927A876004DF862"
             BuildableName = "soulight.app"
             BlueprintName = "soulight"
-            ReferencedContainer = "container:soulight.xcodeproj">
+            ReferencedContainer = "container:Soulight.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "0D8FAF681927A876004DF862"
             BuildableName = "soulight.app"
             BlueprintName = "soulight"
-            ReferencedContainer = "container:soulight.xcodeproj">
+            ReferencedContainer = "container:Soulight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <EnvironmentVariables>
@@ -89,7 +89,7 @@
             BlueprintIdentifier = "0D8FAF681927A876004DF862"
             BuildableName = "soulight.app"
             BlueprintName = "soulight"
-            ReferencedContainer = "container:soulight.xcodeproj">
+            ReferencedContainer = "container:Soulight.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
