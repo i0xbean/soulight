@@ -16,7 +16,7 @@
 #import "NSArray+MZAddition.h"
 
 
-@interface SLHistoryViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface SLHistoryViewController () <UITableViewDataSource, UITableViewDelegate, SLHistoryDelegate>
 
 
 @property (strong, nonatomic)   SLHistoryTopView *          historyTopView;
