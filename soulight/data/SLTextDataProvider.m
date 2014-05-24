@@ -30,10 +30,14 @@ MZSINGLETON_IN_M
 
 - (void)customInit
 {
+    _forgetDays = 3;
+    
     [self loadDataFromCache];
     if (_allDayTextDatas.count == 0) {
         [self createTextData];
         _activeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    } else {
+        [self doForgetTextDatas];
     }
 }
 
@@ -107,6 +111,22 @@ MZSINGLETON_IN_M
 
 #pragma mark - private
 
+- (void)doForgetTextDatas
+{
+    int i = 0;
+    NSDate *nowDate = [NSDate date];
+    for ( ; i<_allDates.count; i++) {
+        NSDate *d = _allDates[i];
+        if ([d daysBeforeDate:nowDate] >= _forgetDays) {
+            break;
+        }
+    }
+    
+    NSRange removeRange = NSMakeRange(i, _allDates.count-i);
+    [_allDates removeObjectsInRange:removeRange];
+    [_allDayTextDatas removeObjectsInRange:removeRange];
+}
+
 - (NSIndexPath*)findATextData:(SLTextData*)data
 {
     __block BOOL has = NO;
@@ -132,18 +152,27 @@ MZSINGLETON_IN_M
 - (SLTextData *)createTextDataWithDate:(NSDate*)date;
 {
     SLTextData *data = [[SLTextData alloc] init];
-    data.createdDate = data.modifiedDate = [NSDate date];
+    data.createdDate = data.modifiedDate = date;
     
     NSMutableArray *dayTextDatas = nil;
     
-    NSDate *newest = _allDates.firstObject;
-    if (newest && [newest isEqualToDateIgnoringTime:data.createdDate]) {
-        dayTextDatas = _allDayTextDatas.firstObject;
+    
+    NSDate *day = [_allDates bk_match:^BOOL(NSDate *obj) {
+        return [obj isEqualToDateIgnoringTime:data.createdDate];
+    }];
+    if (day) {
+        dayTextDatas = _allDayTextDatas[[_allDates indexOfObject:day]];
         
     } else {
-        [_allDates insertObject:data.createdDate atIndex:0];
+        int i = (int)_allDates.count;
+        for ( ; i > 0 ; i--) {
+            if ([date isEarlierThanDate:_allDates[i-1]]) {
+                break;
+            }
+        }
+        [_allDates insertObject:data.createdDate atIndex:i];
         dayTextDatas = [NSMutableArray array];
-        [_allDayTextDatas insertObject:dayTextDatas atIndex:0];
+        [_allDayTextDatas insertObject:dayTextDatas atIndex:i];
     }
     
     [dayTextDatas insertObject:data atIndex:0];
@@ -165,7 +194,7 @@ MZSINGLETON_IN_M
     if (async) {
         dispatch_async(dispatch_queue_create("im.ioi.soulight.textdatas_save", 0), block);
     } else {
-        block();
+        dispatch_sync(dispatch_queue_create("im.ioi.soulight.textdatas_save", 0), block);
     }
     
 }

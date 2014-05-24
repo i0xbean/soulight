@@ -79,13 +79,14 @@ typedef enum  {
     [self addSubview:_redoBtn];
     
     
+    float clearBtnDefaultX = center.x + kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*1 - kLayoutBtnWidth/2;
     _clearBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
     [_clearBtn setImage:[UIImage imageNamed:@"no"] forState:UIControlStateNormal];
     _clearBtn.backgroundColor = btnBgColor;
     _clearBtn.layer.cornerRadius = kLayoutBtnWidth/2;
     _clearBtn.layer.borderWidth = 1;
-    _clearBtn.center = center;
-    _clearBtn.x += kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*1;
+    _clearBtn.x = clearBtnDefaultX;
+    _clearBtn.y = center.y - kLayoutBtnWidth/2;
     [self addSubview:_clearBtn];
     
     _hideKeyboardBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kLayoutBtnWidth, kLayoutBtnWidth)];
@@ -97,6 +98,40 @@ typedef enum  {
     _hideKeyboardBtn.layer.borderWidth = 1;
     _hideKeyboardBtn.x += kLayoutInputMainBtnPadding + kLayoutInputBtnPadding*2;
     [self addSubview:_hideKeyboardBtn];
+    
+    UIPanGestureRecognizer *clearPan = [[UIPanGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        UIPanGestureRecognizer *ges = (UIPanGestureRecognizer*)sender;
+        CGPoint p = [ges translationInView:self];
+        
+        if (state == UIGestureRecognizerStateBegan) {
+            
+        } else if (state == UIGestureRecognizerStateChanged) {
+            
+            _clearBtn.x = clearBtnDefaultX + p.x;
+            if (p.x > kLayoutInputViewDeleteWidth) {
+                _clearBtn.backgroundColor = [UIColor redColor];
+            } else if (p.x < -kLayoutInputViewDeleteWidth) {
+                _clearBtn.backgroundColor = [UIColor redColor];
+            } else {
+                _clearBtn.backgroundColor = btnBgColor;
+            }
+        } else if (state == UIGestureRecognizerStateEnded) {
+            if (p.x > kLayoutInputViewDeleteWidth) {
+                [self.delegate cleanButtonDidSwipeLeft];
+            } else if (p.x < -kLayoutInputViewDeleteWidth) {
+                [self.delegate cleanButtonDidSwipeRight];
+            }
+            
+            [UIView animateWithDuration:0.2 animations:^{
+                _clearBtn.x = clearBtnDefaultX;
+            } completion:^(BOOL finished) {
+                _clearBtn.backgroundColor = btnBgColor;
+            }];
+        }
+    }];
+    [_clearBtn addGestureRecognizer:clearPan];
+    
+
     
     _recordBtn.showsTouchWhenHighlighted = YES;
     _undoBtn.showsTouchWhenHighlighted = YES;

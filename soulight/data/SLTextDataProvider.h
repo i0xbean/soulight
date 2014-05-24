@@ -18,6 +18,8 @@ MZSINGLETON_IN_H
 @property (strong, nonatomic)   NSMutableArray *        allDates;
 @property (strong, nonatomic)   NSIndexPath *           activeIndexPath;
 
+@property (assign, nonatomic)   int                     forgetDays;
+
 - (SLTextData*)createTextData;
 
 - (void)save;

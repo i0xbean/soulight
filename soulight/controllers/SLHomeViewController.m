@@ -18,7 +18,7 @@
 
 
 
-@interface SLHomeViewController () <UITextViewDelegate, IFlySpeechRecognizerDelegate>
+@interface SLHomeViewController () <UITextViewDelegate, IFlySpeechRecognizerDelegate, SLInputViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
@@ -113,6 +113,7 @@
     _blankInputView.alpha = 0;
     
     _accessoryView.isAtBottom = YES;
+    _accessoryView.delegate = self;
 
 
 
@@ -138,11 +139,18 @@
         [self reloadUndoRedoButtons];
     } forControlEvents:UIControlEventTouchUpInside];
     
-    [_accessoryView.clearBtn bk_addEventHandler:^(id sender) {
-        _textView.text = nil;
-        [_textView.undoManager removeAllActions];
-        [self reloadUndoRedoButtons];
-    } forControlEvents:UIControlEventTouchUpInside];
+    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] bk_initWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
+        DDLogWarn(@"%@ddd", sender);
+    }];
+    [_accessoryView.clearBtn addGestureRecognizer:swipe];
+    
+//    [_accessoryView.clearBtn bk_addEventHandler:^(id sender) {
+//        _textView.text = nil;
+//        [self textViewDidChange:_textView];
+//        [_textView.undoManager removeAllActions];
+//        [self reloadUndoRedoButtons];
+//    } forControlEvents:UIControlEventTouchUpInside];
     
     [_accessoryView.hideKeyboardBtn bk_addEventHandler:^(id sender) {
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionOverrideInheritedOptions animations:^{
@@ -328,6 +336,18 @@
 }
 
 - (void)keyboardWillHide:(NSNotification*)note;
+{
+    
+}
+
+#pragma mark - SLInputViewDelegate
+
+- (void)cleanButtonDidSwipeLeft
+{
+    //todo
+}
+
+- (void)cleanButtonDidSwipeRight
 {
     
 }

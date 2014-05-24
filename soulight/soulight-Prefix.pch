@@ -58,6 +58,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #define kLayoutHistoryCellMarginBottom          16
 #define kLayoutHistoryCellDeleteWidth           80
 
+#define kLayoutInputViewDeleteWidth             53
+
 
 #define kNotifActiveTextDataChanged             @"kNotifActiveTextDataChanged"
 #define kNotifDeleteTextDataCell                @"kNotifDeleteTextDataCell"

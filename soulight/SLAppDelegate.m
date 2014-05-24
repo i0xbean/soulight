@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[SLTextDataProvider sharedInstance] debugClearData];
+//    [[SLTextDataProvider sharedInstance] debugAppendDataWithDays:5];
     
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     

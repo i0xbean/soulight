@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class SLInputView;
+
+@protocol SLInputViewDelegate <NSObject>
+
+- (void)cleanButtonDidSwipeLeft;
+- (void)cleanButtonDidSwipeRight;
+
+@end
+
 @interface SLInputView : UIView
+
+@property (weak, nonatomic)         id<SLInputViewDelegate>         delegate;
 
 @property (strong, nonatomic)       UIButton *      recordBtn;
 
