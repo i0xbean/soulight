@@ -817,26 +817,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/soulight/libs",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Connection",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Core",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/Pinterest.embeddedframework",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/RenRenSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "soulight/soulight-Prefix.pch";
 				INFOPLIST_FILE = "soulight/soulight-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/TencentWeiboSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/YiXinSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 				WRAPPER_EXTENSION = app;
@@ -854,26 +840,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/soulight/libs",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Connection",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Core",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/GooglePlusSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/Pinterest.embeddedframework",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/RenRenSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/UI",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "soulight/soulight-Prefix.pch";
 				INFOPLIST_FILE = "soulight/soulight-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/TencentWeiboSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/WeChatSDK",
-					"$(PROJECT_DIR)/soulight/ShareSDK/Extend/YiXinSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "arm64 armv7 armv7s x86_64";
 				WRAPPER_EXTENSION = app;
