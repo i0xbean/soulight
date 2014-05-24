@@ -12,6 +12,7 @@
 #import <iflyMSC/IFlySpeechUser.h>
 
 #import <DDTTYLogger.h>
+#import <ShareSDK/ShareSDK.h>
 
 
 @interface SLAppDelegate () 
@@ -23,6 +24,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    [[SLTextDataProvider sharedInstance] debugAppendDataWithDays:5];
+    
+    [ShareSDK registerApp:@"1dfc17200455"];
     
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     

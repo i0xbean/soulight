@@ -40,6 +40,8 @@
         UICollectionView *v =
             [[UICollectionView alloc] initWithFrame:CGRectMake(144, 20, self.view.width-144-16, self.view.height-20-16)
                                collectionViewLayout:layout];
+        v.backgroundColor = [UIColor clearColor];
+        v.clipsToBounds = NO;
         [v registerClass:[SLShareCell class] forCellWithReuseIdentifier:kCellIdShare];
         [v registerClass:[SLShareReusableView class]
 forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
@@ -75,7 +77,7 @@ forSupplementaryViewOfKind:UICollectionElementKindSectionHeader
 {
     [super viewDidAppear:animated];
     
-    [_collectionView debugBackgroundColor];
+//    [_collectionView debugBackgroundColor];
 }
 
 #pragma mark - UICollectionViewDataSource
