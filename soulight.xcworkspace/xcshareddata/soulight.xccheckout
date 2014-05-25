@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6159FEA8-EEFA-439B-9FAC-384A0C655636</string>
+	<string>63A1F9D0-B95F-498A-82F4-099A3DCEB254</string>
 	<key>IDESourceControlProjectName</key>
 	<string>soulight</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://github.com/i0xbean/soulight.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>soulight/soulight.xcworkspace</string>
+	<string>soulight.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>1F1B20D4-2373-45B1-8512-9BAE298EE4BE</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/i0xbean/soulight.git</string>
