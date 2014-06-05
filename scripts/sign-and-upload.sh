@@ -12,7 +12,7 @@ fi
 # Thanks @johanneswuerbach https://gist.github.com/johanneswuerbach/5559514
 
 PROVISIONING_PROFILE="$HOME/Library/MobileDevice/Provisioning Profiles/$PROFILE_NAME.mobileprovision"
-OUTPUTDIR="$PWD/build/Release-iphoneos"
+OUTPUTDIR="$PWD/build/Debug-iphonesimulator"
 
 echo "***************************"
 echo "*        Signing          *"
