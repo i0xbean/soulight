@@ -9,7 +9,7 @@ before_install:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
   -out scripts/certs/dist.p12
 script:
-- xctool -workspace soulight.xcworkspace -scheme soulight -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+- xctool -workspace soulight.xcworkspace -scheme soulight -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
 after_success:
 - "./scripts/sign-and-upload.sh"
 after_script:
