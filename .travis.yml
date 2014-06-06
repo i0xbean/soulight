@@ -3,7 +3,7 @@ before_install:
 - gem install cocoapods -v '0.32.1'
 - npm install fir -g
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/profile/soulight_ad_hoc.mobileprovision.enc -d -a -out scripts/profile/soulight_ad_hoc.mobileprovision
-- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+- openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
 - ./scripts/add-key.sh
 - ./scripts/update-bundle.sh

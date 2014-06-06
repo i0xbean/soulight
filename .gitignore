@@ -1,7 +1,6 @@
 
 xcuserdata/
 build
-*.cer
 *.p12
 DerivedData
 config.sh
