@@ -4,3 +4,5 @@ build
 *.p12
 DerivedData
 config.sh
+soulight_ad_hoc.mobileprovision
+dist.cer

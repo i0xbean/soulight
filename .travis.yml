@@ -1,4 +1,5 @@
 language: objective-c
+cache: bundler
 before_install:
 - gem install cocoapods -v '0.32.1'
 - npm install fir -g
