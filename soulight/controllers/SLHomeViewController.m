@@ -77,7 +77,7 @@
     [super viewDidLoad];
     
     // self init
-    self.title = @"Soulight hi";
+    self.title = @"Soulight ming";
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     

@@ -39,4 +39,4 @@ RELEASE_NOTES="Build: $TRAVIS_BUILD_NUMBER\nUploaded: $RELEASE_DATE"
 #     -H "X-HockeyAppToken: $HOCKEY_APP_TOKEN"
 # fi
 
-fir up -a im.ioi.soulight -i "$PWD/$APP_NAME.ipa"
+fir up -a im.ioi.soulight -i "$OUTPUTDIR/$APP_NAME.ipa"

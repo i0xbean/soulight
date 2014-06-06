@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>63A1F9D0-B95F-498A-82F4-099A3DCEB254</string>
+	<string>F0F84E53-E849-43B8-8AB9-B17783CB6847</string>
 	<key>IDESourceControlProjectName</key>
 	<string>soulight</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1F1B20D4-2373-45B1-8512-9BAE298EE4BE</key>
-		<string>https://github.com/i0xbean/soulight.git</string>
+		<key>745322DD-6D2F-4833-995D-C94C3AA9327F</key>
+		<string>https://github.com/mithvv/soulight.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>soulight.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1F1B20D4-2373-45B1-8512-9BAE298EE4BE</key>
+		<key>745322DD-6D2F-4833-995D-C94C3AA9327F</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/i0xbean/soulight.git</string>
+	<string>https://github.com/mithvv/soulight.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1F1B20D4-2373-45B1-8512-9BAE298EE4BE</string>
+	<string>745322DD-6D2F-4833-995D-C94C3AA9327F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1F1B20D4-2373-45B1-8512-9BAE298EE4BE</string>
+			<string>745322DD-6D2F-4833-995D-C94C3AA9327F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>soulight</string>
 		</dict>

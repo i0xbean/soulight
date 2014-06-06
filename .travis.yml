@@ -9,17 +9,17 @@ before_install:
 - openssl aes-256-cbc -k "$ENCRYPTION_SECRET" -in scripts/certs/dist.p12.enc -d -a
   -out scripts/certs/dist.p12
 script:
-- xctool -workspace soulight.xcworkspace -scheme soulight -sdk iphonesimulator -configuration Debug OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
+- xctool -workspace soulight.xcworkspace -scheme soulight -sdk iphoneos -configuration Release OBJROOT=$PWD/build SYMROOT=$PWD/build ONLY_ACTIVE_ARCH=NO
 after_success:
 - "./scripts/sign-and-upload.sh"
 after_script:
 - "./scripts/remove-key.sh"
 env:
   global:
-  - secure: RZqQZ9QTE/iy/9lV/+sfI/G7M9Y1zgyiPC9UjVVCrDfP+qX0wT8xYkEf05Oq9et3PydN1suTKF4Fb7YC70ksdhs1bh03qz9kud45Zcof5Plx63/F1sXb4Tus3g9uXwd2fgDwO0Jm8CYpGg8BkseqQBBr9KnRlEDR9ASFFx04wUw=
   - APP_NAME="soulight"
   - 'DEVELOPER_NAME="iPhone Distribution: Ming Zeng (5V5696VKXV)"'
   - PROFILE_NAME="soulight_ad_hoc"
-  - secure: Cnr3V1KFmUS47ZcP1Si8W+Qpl4p0Ff8eSGtbOo3+/cAt5v2HgtuBdoj7eQRFOoJeKHUsj/mOZ42+yYcr8C+lXMGUXrDEaED/7E8E2imEIEaBuhcUeqc3GSfwzmHHXq35FUWRnl0Q1F7LetHs5JL/Xe8DDKqhde2lXyONDjAawAk=
-  - secure: BKx/2RRk/Eqkt05ZNrwpHsUpm95Ye3bYFHzS15Sx5Fpsuy2TcGFZFkmyXALcIrVbFb5aLQ31Gdze9XQH2rqCv/6JgH4lntq+ZKU3m0wJ2xzOnVaZyjXbZDzJpHPqxBpq3vLuGyo3JzL/3UlXsfLr+tibdu8yCyTcr/4H/+AT19A=
-  - secure: MSJxuYqrOStDjbvPiXRUQJHpv1Upv8dtm07V8mt4zAR0x06fFHAoDL9JjS28leTU91q3mng1m9bu3E4VCaToslbzKU1ZPpEL1S6p3JqmiGnI2kN5CeRczHkcxjHAcHhRlSRXh/nNRsP+Hist0UJ/6XBbXrO+P99I//42psSDmrg=
+  - NONE1=KEY_PASSWORD
+  - secure: hRvkjxp0X7M7zIdscxNOsrIHM75QTnRNE9T0UezqneNn8lz4Mif5anc6eIF9+iftXyvqlKhf0Zin9E2vhvj7veB/FqYJVsxXBUK7mdV8MPZqa63zwDh0PRThU2LeLOSNohCBx7u5hEyVjNGeFP8iA9XM3fvpNaDbP7hAn4EqhXQ=
+  - NONE2=ENCRYPTION_SECRET
+  - secure: fDA7Kdh9Ia5MEAGESZ5u+L4W5cwqYIXNjcK/r1kYrPvyn6bZYNuXYalJNx/F9pdiB1srxQuluVKkzdmUYiVfM1rzQEmJqHIvaaGY7Upy2Pni1alKnanU6QCYZXzQUQfpcAurFgP38DQjnwRw9cj5BgEaGZdFivZW/oL8mCHQMRE=
